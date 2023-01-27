@@ -1,0 +1,50 @@
+// Vars
+$container-max-width : 1400px;
+$container-padding: 0 1rem;
+
+
+$margins: (
+  0: 0,
+  1: .5rem,
+  2: 1rem,
+  3: 1.5rem,
+  4: 2rem,
+  5: 4rem,
+  6: 8rem,
+);
+
+// Classes
+.container{
+
+  max-width: $container-max-width;
+  padding: $container-padding;
+  box-sizing: border-box;
+  margin: auto;
+
+}
+
+@each $class, $val in $margins{
+
+  .mr-#{$class}{
+    margin-right: $val;
+  }
+
+  .mb-#{$class}{
+    margin-bottom: $val;
+  }
+
+  .mx-#{$class}{
+    margin-left: $val;
+    margin-right: $val;
+  }
+
+  .my-#{$class}{
+    margin-top: $val;
+    margin-bottom: $val;
+  }
+
+}
+
+
+
+// Mixins
