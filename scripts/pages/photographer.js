@@ -8,6 +8,7 @@ async function getPhotographerInfo(id) {
             .then((res) => {
                 res.json()
                     .then((data) => {
+
                         const people = data.photographers;
 
                         // We get the corresponding photographer info with provided id
@@ -23,10 +24,24 @@ async function getPhotographerInfo(id) {
                         if(photographer !== null) {
 
                             const media = data.media;
+                            const media_list = [];
+
+                            for(const key in media) {
+
+
+                                if(media[key].photographerId === id) {
+
+                                    media_list.push(media[key]);
+
+                                }
+
+                            }
 
 
 
-                            resolve(photographer);
+
+                            console.log(media_list);
+                            resolve({"photographer" : photographer, "media" : media_list});
                         }
 
 
@@ -38,12 +53,27 @@ async function getPhotographerInfo(id) {
 
 async function displayData(photographer) {
 
-    const $main = document.querySelector("#main");
-
+    // Display Photographer Info
+    const $photograph_header = document.querySelector(".photograph-header");
     // eslint-disable-next-line no-undef
-    const photographerModel = photographerFactory(photographer);
+    const photographerModel = photographerFactory(photographer.photographer);
     const userPageDOM = photographerModel.getUserPageDOM();
-    $main.appendChild(userPageDOM);
+    $photograph_header.appendChild(userPageDOM.header_info);
+    $photograph_header.appendChild(userPageDOM.btn_container);
+    $photograph_header.appendChild(userPageDOM.header_img_container);
+
+    // Display Photographer Media
+    const $media_container = document.querySelector(".media-container");
+    photographer.media.forEach((media) => {
+        // eslint-disable-next-line no-undef
+       const mediaModel = mediaFactory(media);
+       const mediaCardDom = mediaModel.getMediaCardDOM();
+        $media_container.appendChild(mediaCardDom);
+
+
+    });
+
+
 
 }
 

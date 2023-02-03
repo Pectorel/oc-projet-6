@@ -1,6 +1,7 @@
 /*
 * Contain all global variables
 */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 html, body {
   margin: 0;
   padding: 0;
@@ -250,6 +251,18 @@ h1 {
   color: #901c1c;
   font-size: 1.5rem;
 }
+#photographer-page .photograph-header .contact_button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+}
 #photographer-page .photograph-header .photograph-header-img-container {
   width: 15%;
   height: 0;
@@ -265,17 +278,56 @@ h1 {
   transform: translate(-50%, -50%);
   width: 155%;
 }
-#photographer-page .contact_button {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  padding: 11px;
-  width: 170px;
-  height: 70px;
+#photographer-page .media-filters {
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#photographer-page .media-filters label {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+#photographer-page .media-filters .media-select {
   border: none;
-  background-color: #901c1c;
-  border-radius: 5px;
+  background: #901c1c;
+  padding: 1rem;
+  color: #fafafa;
+  border-radius: 4px;
+}
+#photographer-page .media-container {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 25px 95px;
+}
+#photographer-page .media-container .media {
   cursor: pointer;
+}
+#photographer-page .media-container .media .media-source-container {
+  position: relative;
+  overflow: hidden;
+  height: 325px;
+}
+#photographer-page .media-container .media .media-source-container .media-source {
+  width: 140%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#photographer-page .media-container .media .media-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #901c1c;
+  padding: 0.5rem 0;
+}
+#photographer-page .media-container .media .media-info .media-info-title {
+  font-size: 1.5rem;
+}
+#photographer-page .media-container .media .media-info .media-info-likes {
+  font-weight: 500;
 }
 #photographer-page #contact_modal {
   display: none;

@@ -27,8 +27,6 @@ function photographerFactory(data) {
 
   function getUserPageDOM() {
 
-    const $header = createElement("div", null, ["photograph-header", "container"])
-
     // Header Infos
     const $header_info = createElement("div", null, ["photograph-header-info"]);
     const $name = createElement("h1", name, ["photograph-header-info-name", "mb-1"]);
@@ -38,24 +36,21 @@ function photographerFactory(data) {
     $header_info.appendChild($name);
     $header_info.appendChild($location);
     $header_info.appendChild($tagline);
-    $header.appendChild($header_info);
 
     // Modal button
     const $btn_container = createElement("div", null, ["photograph-header-btn-container"]);
     const $modal_btn = createElement("button", "Contactez-moi", ["contact_button"], {"onclick": "displayModal()"});
 
     $btn_container.appendChild($modal_btn);
-    $header.appendChild($btn_container);
 
     // Photographer img
     const $header_img_container = createElement("div", null, ["photograph-header-img-container"]);
     const $header_img = createElement("img", null, ["photograph-header-img"], {"src": picture, "alt": name});
 
     $header_img_container.appendChild($header_img);
-    $header.appendChild($header_img_container);
 
 
-    return $header;
+    return {"header_info" : $header_info, "btn_container": $btn_container, "header_img_container": $header_img_container};
   }
 
   function createElement(tag, txt = null, classes = null, attributes = null) {

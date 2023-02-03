@@ -4,21 +4,31 @@
     <link href="./css/global.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
   <body id="photographer-page">
 
     <header class="container my-4">
         <a href="./">
-            <img src="assets/images/logo.png" class="logo" alt="Logo Fisheye"/>
+            <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
         </a>
     </header>
 
     <main id="main">
-      <!--<div class="photograph-header container">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>-->
+        <div class="photograph-header container mb-3"></div>
+
+        <div class="media-filters container mb-5">
+
+            <label class="mr-3" for="media-sort">Trier par</label>
+            <select class="media-select" name="media_sort" id="media-sort">
+                <option value="likes">Popularité</option>
+                <option value="date">Date</option>
+                <option value="title">Titre</option>
+            </select>
+
+        </div>
+
+        <div class="media-container container"></div>
     </main>
 
     <div id="contact_modal">
@@ -37,7 +47,9 @@
         </div>
     </div>
 
+
     <script src="./scripts/factories/photographer.js"></script>
+    <script src="./scripts/factories/media.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
   </body>

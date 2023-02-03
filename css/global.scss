@@ -8,6 +8,8 @@
 * Page Specific Style
 */
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
 // Index
 body {
   font-family: "DM Sans", sans-serif;
@@ -140,6 +142,19 @@ h1 {
 
     }
 
+    .contact_button {
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      padding: 11px;
+      width: 170px;
+      height: 70px;
+      border: none;
+      background-color: $primary-color;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
     .photograph-header-img-container{
 
       width: 15%;
@@ -164,18 +179,87 @@ h1 {
 
   }
 
-  .contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: $primary-color;
-    border-radius: 5px;
-    cursor: pointer;
+  // Gallery
+
+  .media-filters{
+
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    label{
+
+      font-weight: 700;
+      font-size: 1.125rem;
+
+    }
+
+    .media-select{
+
+      border: none;
+      background: $primary-color;
+      padding: 1rem;
+      color: $tertiary-color;
+      border-radius: 4px;
+
+
+    }
+
   }
+
+
+  .media-container {
+
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px 95px;
+
+
+    .media{
+
+      cursor: pointer;
+
+      .media-source-container{
+
+        position: relative;
+        overflow: hidden;
+        height: 325px;
+
+        .media-source{
+          width: 140%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+      }
+
+      .media-info{
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $tertiary-color-text;
+        padding: .5rem 0;
+
+        .media-info-title{
+          font-size: 1.5rem;
+        }
+
+        .media-info-likes{
+          font-weight: 500;
+        }
+
+      }
+
+    }
+
+  }
+
+
 
   #contact_modal {
     display: none;
