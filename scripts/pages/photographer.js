@@ -12,8 +12,8 @@ async function getPhotographerInfo(id) {
 
                         //console.log(people);
                         for (const key in people) {
-                            
-                            if(people[key].id == id){
+
+                            if(people[key].id === id){
                                 photographer = people[key];
                                 break;
                             }
@@ -29,7 +29,7 @@ async function getPhotographerInfo(id) {
 
 async function init(){
     let params = (new URL(document.location)).searchParams;
-    let id = params.get("id");
+    let id = parseInt(params.get("id"));
 
     const photographer = await getPhotographerInfo(id);
     console.log(photographer);
