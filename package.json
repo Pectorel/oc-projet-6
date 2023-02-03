@@ -1,9 +1,18 @@
 {
-  "devDependencies": {
-    "eslint": "^8.32.0",
-    "eslint-config-airbnb": "^19.0.4"
-  },
+  "name": "oc-projet-6",
+  "version": "1.0.0",
+  "description": "Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.",
+  "main": "index.js",
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//Pectorel/oc-projet-6.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.33.0"
   }
 }

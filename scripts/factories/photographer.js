@@ -1,38 +1,54 @@
+// eslint-disable-next-line no-unused-vars
 function photographerFactory(data) {
-    const { name, id, city, country, tagline, price, portrait } = data;
+  const {
+    name, id, city, country, tagline, price, portrait,
+  } = data;
 
-    const picture = `assets/photographers/${portrait}`;
+  const picture = `assets/photographers/${portrait}`;
 
-    function getUserCardDOM()
-    {
-        const $article = document.createElement( "article" );
-        $article.classList.add("photographer");
+  function getUserCardDOM() {
 
-        const $img_container= document.createElement("div");
-        $img_container.classList.add("photographer-img-container");
-        $img_container.style.background = "transparent url(\"" + picture + "\") no-repeat center center";
+    const $article = createElement('article', null, ["photographer"]);
+    const $img_container = createElement('div', null, ["photographer-img-container"]);
+    $img_container.style.background = `transparent url("${picture}") no-repeat center center`;
+    const $h2 = createElement('h2', name, ["photographer-name"]);
+    const $city_p = createElement('p', `${city}, ${country}`, ["photographer-city"]);
+    const $tagline_p = createElement('p', tagline, ["photographer-tagline"]);
+    const $price_p = createElement('p', `${price}€/jour`, "photographer-price");
+    $article.appendChild($img_container);
+    $article.appendChild($h2);
+    $article.appendChild($city_p);
+    $article.appendChild($tagline_p);
+    $article.appendChild($price_p);
+    return ($article);
 
-        const $img = document.createElement( "img" );
-        /*$img.classList.add("photographer-img");
-        $img.setAttribute("src", picture);*/
-        const $h2 = document.createElement( "h2" );
-        $h2.classList.add("photographer-name")
-        $h2.textContent = name;
-        const $city_p = document.createElement("p");
-        $city_p.classList.add("photographer-city");
-        $city_p.textContent = city + ", " + country;
-        const $tagline_p = document.createElement("p");
-        $tagline_p.classList.add("photographer-tagline");
-        $tagline_p.textContent = tagline;
-        const $price_p = document.createElement("p");
-        $price_p.classList.add("photographer-price");
-        $price_p.textContent = price + "€/jour";
-        $article.appendChild($img_container);
-        $article.appendChild($h2);
-        $article.appendChild($city_p);
-        $article.appendChild($tagline_p);
-        $article.appendChild($price_p);
-        return ($article);
+  }
+
+  function createElement(tag, txt = null, classes = null, attributes = null) {
+
+    const $elem = document.createElement(tag);
+
+    if(Array.isArray(classes) && classes.length > 0) {
+      classes.forEach((val) => {
+        $elem.classList.add(val);
+      });
     }
-    return { name, id, city, country, tagline, price, picture, getUserCardDOM }
+
+    if(Array.isArray(attributes) && attributes.length > 0) {
+      attributes.forEach((attr, val) => {
+        $elem.setAttribute(attr, val);
+      });
+    }
+
+    if(txt != null){
+      $elem.textContent = txt;
+    }
+
+    return $elem;
+
+  }
+
+  return {
+    name, id, city, country, tagline, price, picture, getUserCardDOM,
+  };
 }

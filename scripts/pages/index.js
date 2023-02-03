@@ -8,9 +8,9 @@ async function getPhotographers() {
       .then((res) => {
         res.json()
           .then((data) => {
-            const people = data.photographers;
-            // eslint-disable-next-line no-restricted-syntax
+              const people = data.photographers;
             for (const key in people) {
+                // eslint-disable-next-line no-prototype-builtins
               if (people.hasOwnProperty(key)) {
                 const photographer = people[key];
                 photographers.push(photographer);
@@ -26,9 +26,10 @@ async function getPhotographers() {
 async function displayData(photographers) {
   const photographersSection = document.querySelector('.photographer_section');
 
-  console.log(photographers);
+  //console.log(photographers);
 
   photographers.forEach((photographer) => {
+      // eslint-disable-next-line no-undef
     const photographerModel = photographerFactory(photographer);
     const userCardDOM = photographerModel.getUserCardDOM();
     photographersSection.appendChild(userCardDOM);
