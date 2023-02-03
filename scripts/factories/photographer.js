@@ -8,18 +8,21 @@ function photographerFactory(data) {
 
   function getUserCardDOM() {
 
-    const $article = createElement('article', null, ["photographer"]);
+    const $article = createElement('article', null, ["photographer"], {"data-link-id": id});
     const $img_container = createElement('div', null, ["photographer-img-container"]);
-    $img_container.style.background = `transparent url("${picture}") no-repeat center center`;
+    const $img = createElement("img", null, ["photographer-img"], {"src" : `${picture}`, "alt": name});
     const $h2 = createElement('h2', name, ["photographer-name"]);
     const $city_p = createElement('p', `${city}, ${country}`, ["photographer-city"]);
     const $tagline_p = createElement('p', tagline, ["photographer-tagline"]);
-    const $price_p = createElement('p', `${price}€/jour`, "photographer-price");
+    const $price_p = createElement('p', `${price}€/jour`, ["photographer-price"]);
+
+    $img_container.appendChild($img);
     $article.appendChild($img_container);
     $article.appendChild($h2);
     $article.appendChild($city_p);
     $article.appendChild($tagline_p);
     $article.appendChild($price_p);
+
     return ($article);
 
   }
@@ -34,10 +37,11 @@ function photographerFactory(data) {
       });
     }
 
-    if(Array.isArray(attributes) && attributes.length > 0) {
-      attributes.forEach((attr, val) => {
-        $elem.setAttribute(attr, val);
-      });
+    if(attributes != null && Object.keys(attributes).length > 0) {
+
+      for(let i in attributes) {
+        $elem.setAttribute(i, attributes[i]);
+      }
     }
 
     if(txt != null){

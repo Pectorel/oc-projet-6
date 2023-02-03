@@ -179,24 +179,34 @@ h1 {
   gap: 120px;
 }
 
-.photographer_section article {
+.photographer {
   justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
+  cursor: pointer;
 }
 
-.photographer_section article .photographer-img-container {
+.photographer .photographer-img-container {
   width: 70%;
   padding-top: 70%;
   height: 0;
   border-radius: 50%;
-  background-size: cover !important;
+  overflow: hidden;
+  position: relative;
 }
 
-.photographer_section article .photographer-name {
+.photographer-img-container .photographer-img {
+  width: 155%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.photographer .photographer-name {
   color: #d3573c;
   font-size: 2.25rem;
   margin-top: 20px;
@@ -204,13 +214,13 @@ h1 {
   font-weight: 400;
 }
 
-.photographer_section article .photographer-city {
+.photographer .photographer-city {
   color: #901c1c;
   font-size: 0.95rem;
   margin-bottom: 2px;
 }
 
-.photographer_section article .photographer-price {
+.photographer .photographer-price {
   color: #757575;
   font-size: 0.95rem;
   margin-top: 4px;

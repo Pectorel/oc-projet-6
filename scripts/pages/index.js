@@ -8,13 +8,10 @@ async function getPhotographers() {
       .then((res) => {
         res.json()
           .then((data) => {
-              const people = data.photographers;
+            const people = data.photographers;
             for (const key in people) {
-                // eslint-disable-next-line no-prototype-builtins
-              if (people.hasOwnProperty(key)) {
                 const photographer = people[key];
                 photographers.push(photographer);
-              }
             }
 
             resolve(photographers);
@@ -25,8 +22,6 @@ async function getPhotographers() {
 
 async function displayData(photographers) {
   const photographersSection = document.querySelector('.photographer_section');
-
-  //console.log(photographers);
 
   photographers.forEach((photographer) => {
       // eslint-disable-next-line no-undef
@@ -42,4 +37,19 @@ async function init() {
   displayData(photographers);
 }
 
-init();
+init().then(function (){
+
+    let $links = document.querySelectorAll("[data-link-id]");
+
+    $links.forEach(($link) => {
+
+        $link.addEventListener("click", function (e){
+
+            let url = "/oc-projet-6/photographer.html?id=" + this.getAttribute("data-link-id");
+            window.location = url;
+
+        });
+
+    });
+
+});
