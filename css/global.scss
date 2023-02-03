@@ -101,29 +101,89 @@ h1 {
 
 
 // Photographer Page
-#contact_modal {
-  display: none;
+
+#photographer-page{
+
+  header{
+
+    .logo{
+      margin-left: 0;
+    }
+
+  }
+
+  #main{
+    margin: 0;
+  }
+
+  .photograph-header {
+    background-color: $tertiary-color;
+    height: 300px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.6rem 3rem;
+
+    .photograph-header-info{
+
+      .photograph-header-info-name{
+        color: $primary-color-text;
+        font-size: 4rem;
+        font-weight: 400;
+      }
+
+      .photograph-header-info-location{
+        color: $tertiary-color-text;
+        font-size: 1.5rem;
+      }
+
+    }
+
+    .photograph-header-img-container{
+
+      width: 15%;
+      height: 0;
+      padding-top: 15%;
+      overflow: hidden;
+      border-radius: 50%;
+      position: relative;
+
+      .photograph-header-img{
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 155%;
+
+      }
+
+    }
+
+
+  }
+
+  .contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: $primary-color;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #contact_modal {
+    display: none;
+  }
+
 }
 
-.photograph-header {
-  background-color: $tertiary-color;
-  height: 300px;
-  margin: 0 100px;
-}
-
-.contact_button {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  padding: 11px;
-  width: 170px;
-  height: 70px;
-  border: none;
-  background-color: $primary-color;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
+// Modal
 .modal {
   border-radius: 5px;
   background-color: #DB8876;
@@ -151,6 +211,7 @@ h1 {
   text-align: center;
 }
 
+// Form
 form {
   display: flex;
   width: 100%;

@@ -226,17 +226,46 @@ h1 {
   margin-top: 4px;
 }
 
-#contact_modal {
-  display: none;
+#photographer-page header .logo {
+  margin-left: 0;
 }
-
-.photograph-header {
+#photographer-page #main {
+  margin: 0;
+}
+#photographer-page .photograph-header {
   background-color: #fafafa;
   height: 300px;
-  margin: 0 100px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem 3rem;
 }
-
-.contact_button {
+#photographer-page .photograph-header .photograph-header-info .photograph-header-info-name {
+  color: #d3573c;
+  font-size: 4rem;
+  font-weight: 400;
+}
+#photographer-page .photograph-header .photograph-header-info .photograph-header-info-location {
+  color: #901c1c;
+  font-size: 1.5rem;
+}
+#photographer-page .photograph-header .photograph-header-img-container {
+  width: 15%;
+  height: 0;
+  padding-top: 15%;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+}
+#photographer-page .photograph-header .photograph-header-img-container .photograph-header-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 155%;
+}
+#photographer-page .contact_button {
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -247,6 +276,9 @@ h1 {
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+}
+#photographer-page #contact_modal {
+  display: none;
 }
 
 .modal {
