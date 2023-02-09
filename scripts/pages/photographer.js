@@ -37,10 +37,7 @@ async function getPhotographerInfo(id) {
 
                             }
 
-
-
-
-                            console.log(media_list);
+                            //console.log(media_list);
                             resolve({"photographer" : photographer, "media" : media_list});
                         }
 
@@ -70,10 +67,12 @@ async function displayData(photographer) {
        const mediaCardDom = mediaModel.getMediaCardDOM();
         $media_container.appendChild(mediaCardDom);
 
-
     });
 
+    // Display Photographer Name in Modal
+    const $modal_title = document.querySelector(".modal-title");
 
+    $modal_title.textContent += " " + photographer.photographer.name;
 
 }
 
@@ -88,12 +87,75 @@ async function init(){
     let params = (new URL(document.location)).searchParams;
     let id = parseInt(params.get("id"));
 
-    // Process Photographer
+    // Process Photographer and Media
     const photographer = await getPhotographerInfo(id);
     displayData(photographer);
-
-    // Process Photographer Media
 
 }
 
 init();
+
+
+/*
+*
+* Retrieve data from the modal form after submit
+*
+* */
+// eslint-disable-next-line no-unused-vars
+function onFormSubmit(e, $form){
+
+
+    if(e) e.preventDefault();
+
+    let data = new FormData($form);
+
+    for(const pair of data.entries()) {
+
+        console.log(`${pair[0]} : ${pair[1]}`);
+
+    }
+
+
+}
+
+
+/*
+*
+* Show Lightbox and insert data corresponding to the clicked media
+*
+* */
+// eslint-disable-next-line no-unused-vars
+function showLightbox(media){
+
+    console.log(media);
+
+    let $lightbox = document.querySelector("#media-lightbox");
+    let $lightbox_media = document.querySelector(".lightbox-media");
+
+    $lightbox_media.innerHTML = "";
+
+    const path = `./assets/images/${media.photographerId}/`;
+    let $media = null;
+
+    // Media
+    if(media.image != null){
+
+
+        $media = createElement("img", ["lightbox-media-img"], null, {"src": path + media.image, "alt": media.title});
+
+    }
+    else{
+        $media = createElement("video", ["lightbox-media-vid"], null, {"src": path + media.video, "controls" : null});
+    }
+
+    // Title
+    const $title = createElement("p", ["lightbox-media-title"], media.title);
+
+    // Append
+    $lightbox_media.appendChild($media);
+    $lightbox_media.appendChild($title);
+
+
+    $lightbox.style.display = "block";
+
+}

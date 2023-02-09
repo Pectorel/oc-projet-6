@@ -43,7 +43,7 @@ init().then(function (){
 
     $links.forEach(($link) => {
 
-        $link.addEventListener("click", function (e){
+        $link.addEventListener("click", function (){
 
             let url = "/oc-projet-6/photographer.html?id=" + this.getAttribute("data-link-id");
             window.location = url;

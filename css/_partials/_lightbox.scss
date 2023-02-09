@@ -1,0 +1,84 @@
+.lightbox{
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80%;
+  min-width: 50%;
+
+  .close-lightbox{
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 12;
+
+  }
+
+  .lightbox-media-container{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    gap: 2rem;
+
+    .lightbox-media-prev, .lightbox-media-next{
+      cursor: pointer;
+    }
+
+    .lightbox-media-prev{
+      transform: rotateZ(180deg);
+    }
+
+    .lightbox-media{
+      position: relative;
+      z-index: 4;
+      text-align: center;
+      flex-direction: column;
+      height: 100%;
+      display: flex;
+      border-radius: 5px;
+
+      &:after{
+
+        content: "";
+        position: absolute;
+        right: -2px;
+        top: 0;
+        bottom: 0;
+        border-radius: 0 15px 15px 0;
+        width: 4px;
+        background: #c4c4c4;
+
+      }
+
+
+
+      img, video{
+        height: 100%;
+        border-radius: 5px;
+      }
+
+      .lightbox-media-title{
+
+        margin-top: .6rem;
+        display: block;
+        color: $tertiary-color-text;
+        font-size: 24px;
+        text-align: left;
+
+      }
+
+    }
+
+  }
+
+
+
+
+
+
+}

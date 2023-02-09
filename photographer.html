@@ -31,23 +31,55 @@
         <div class="media-container container"></div>
     </main>
 
-    <div id="contact_modal">
+    <div id="media-lightbox">
+
+        <div class="lightbox">
+
+            <img class="close-lightbox" src="assets/icons/close-lightbox.svg" data-close="#media-lightbox"/>
+
+            <div class="lightbox-media-container">
+                <img class="lightbox-media-prev" src="./assets/icons/arrow.svg" alt="Previous image">
+
+                <div class="lightbox-media"></div>
+                
+                <img class="lightbox-media-next" src="./assets/icons/arrow.svg" alt="Next image">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="contact-modal">
         <div class="modal">
-            <header>
-              <h2>Contactez-moi</h2>
+            <header class="mb-2">
+              <h1 class="modal-title">Contactez-moi</h1>
               <img src="assets/icons/close.svg" onclick="closeModal()" />
             </header>
-            <form>
-                <div>
-                    <label>Prénom</label>
-                    <input />
+            <form id="modal-form" name="modal-form" action="./" method="POST" onsubmit="onFormSubmit(event, this);">
+                <div class="form-field">
+                    <label for="first-name">Prénom</label>
+                    <input id="first-name" name="first_name" required/>
                 </div>
-                <button class="contact_button">Envoyer</button>
+                <div class="form-field">
+                    <label for="last-name">Nom</label>
+                    <input id="last-name" name="last_name" required/>
+                </div>
+                <div class="form-field">
+                    <label for="mail">Email</label>
+                    <input id="mail" name="mail" required/>
+                </div>
+                <div class="form-field mb-3">
+                    <label for="message">Votre message</label>
+                    <textarea name="message" id="message" cols="30" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="contact-button">Envoyer</button>
             </form>
         </div>
     </div>
 
 
+    <script src="./scripts/utils/dataFunctions.js"></script>
+    <script src="./scripts/utils/createElement.js"></script>
     <script src="./scripts/factories/photographer.js"></script>
     <script src="./scripts/factories/media.js"></script>
     <script src="./scripts/pages/photographer.js"></script>

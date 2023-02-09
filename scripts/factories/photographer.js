@@ -6,13 +6,13 @@ function photographerFactory(data) {
 
   function getUserCardDOM() {
 
-    const $article = createElement('article', null, ["photographer"], {"data-link-id": id});
-    const $img_container = createElement('div', null, ["photographer-img-container"]);
-    const $img = createElement("img", null, ["photographer-img"], {"src" : picture, "alt": name});
-    const $h2 = createElement('h2', name, ["photographer-name"]);
-    const $city_p = createElement('p', `${city}, ${country}`, ["photographer-city"]);
-    const $tagline_p = createElement('p', tagline, ["photographer-tagline"]);
-    const $price_p = createElement('p', `${price}€/jour`, ["photographer-price"]);
+    const $article = createElement('article',["photographer"],null,  {"data-link-id": id});
+    const $img_container = createElement('div',["photographer-img-container"]);
+    const $img = createElement("img",["photographer-img"], null, {"src" : picture, "alt": name});
+    const $h2 = createElement('h2',["photographer-name"], name);
+    const $city_p = createElement('p',["photographer-city"], `${city}, ${country}`,);
+    const $tagline_p = createElement('p',["photographer-tagline"], tagline);
+    const $price_p = createElement('p',["photographer-price"],`${price}€/jour`,);
 
     $img_container.appendChild($img);
     $article.appendChild($img_container);
@@ -28,24 +28,24 @@ function photographerFactory(data) {
   function getUserPageDOM() {
 
     // Header Infos
-    const $header_info = createElement("div", null, ["photograph-header-info"]);
-    const $name = createElement("h1", name, ["photograph-header-info-name", "mb-1"]);
-    const $location = createElement("p", `${city}, ${country}`, ["photograph-header-info-location", "mb-2"]);
-    const $tagline = createElement("p", tagline, ["photograph-header-info-tagline"]);
+    const $header_info = createElement("div",["photograph-header-info"]);
+    const $name = createElement("h1",["photograph-header-info-name", "mb-1"], name);
+    const $location = createElement("p",["photograph-header-info-location", "mb-2"],`${city}, ${country}`,);
+    const $tagline = createElement("p",["photograph-header-info-tagline"], tagline,);
 
     $header_info.appendChild($name);
     $header_info.appendChild($location);
     $header_info.appendChild($tagline);
 
     // Modal button
-    const $btn_container = createElement("div", null, ["photograph-header-btn-container"]);
-    const $modal_btn = createElement("button", "Contactez-moi", ["contact_button"], {"onclick": "displayModal()"});
+    const $btn_container = createElement("div",["photograph-header-btn-container"]);
+    const $modal_btn = createElement("button",["contact_button"],"Contactez-moi",{"onclick": "displayModal()"});
 
     $btn_container.appendChild($modal_btn);
 
     // Photographer img
-    const $header_img_container = createElement("div", null, ["photograph-header-img-container"]);
-    const $header_img = createElement("img", null, ["photograph-header-img"], {"src": picture, "alt": name});
+    const $header_img_container = createElement("div",["photograph-header-img-container"]);
+    const $header_img = createElement("img",["photograph-header-img"],null,{"src": picture, "alt": name});
 
     $header_img_container.appendChild($header_img);
 
@@ -53,7 +53,7 @@ function photographerFactory(data) {
     return {"header_info" : $header_info, "btn_container": $btn_container, "header_img_container": $header_img_container};
   }
 
-  function createElement(tag, txt = null, classes = null, attributes = null) {
+  /*function createElement(tag, txt = null, classes = null, attributes = null) {
 
     const $elem = document.createElement(tag);
 
@@ -76,7 +76,7 @@ function photographerFactory(data) {
 
     return $elem;
 
-  }
+  }*/
 
   return {name, id, city, country, tagline, price, picture, getUserCardDOM, getUserPageDOM};
 }

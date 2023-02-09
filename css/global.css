@@ -144,6 +144,139 @@ h1, h2, h3, h4, h5, h6, a, p, span {
   margin-bottom: 8rem;
 }
 
+.modal {
+  border-radius: 5px;
+  background-color: #DB8876;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 35px 35px 35px;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: -2px 6px 10px 1px rgba(0, 0, 0, 0.4);
+}
+.modal header {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.modal header img {
+  cursor: pointer;
+  position: absolute;
+  top: 23px;
+  right: 0;
+}
+.modal header .modal-title {
+  font-size: 64px;
+  font-weight: normal;
+  text-align: left;
+  color: #000;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+form label {
+  color: #312E2E;
+  font-size: 36px;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+}
+form input, form textarea {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+}
+form input {
+  height: 68px;
+}
+form textarea {
+  resize: none;
+}
+form .contact-button {
+  border: none;
+  background: #901c1c;
+  padding: 1.2rem 2rem;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.lightbox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80%;
+  min-width: 50%;
+}
+.lightbox .close-lightbox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  z-index: 12;
+}
+.lightbox .lightbox-media-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: 2rem;
+}
+.lightbox .lightbox-media-container .lightbox-media-prev, .lightbox .lightbox-media-container .lightbox-media-next {
+  cursor: pointer;
+}
+.lightbox .lightbox-media-container .lightbox-media-prev {
+  transform: rotateZ(180deg);
+}
+.lightbox .lightbox-media-container .lightbox-media {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  flex-direction: column;
+  height: 100%;
+  display: flex;
+  border-radius: 5px;
+}
+.lightbox .lightbox-media-container .lightbox-media:after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 15px 15px 0;
+  width: 4px;
+  background: #c4c4c4;
+}
+.lightbox .lightbox-media-container .lightbox-media img, .lightbox .lightbox-media-container .lightbox-media video {
+  height: 100%;
+  border-radius: 5px;
+}
+.lightbox .lightbox-media-container .lightbox-media .lightbox-media-title {
+  margin-top: 0.6rem;
+  display: block;
+  color: #901c1c;
+  font-size: 24px;
+  text-align: left;
+}
+
 /*
 * Page Specific Style
 */
@@ -329,62 +462,23 @@ h1 {
 #photographer-page .media-container .media .media-info .media-info-likes {
   font-weight: 500;
 }
-#photographer-page #contact_modal {
+#photographer-page #media-lightbox {
   display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
 }
-
-.modal {
-  border-radius: 5px;
-  background-color: #DB8876;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 35px;
-  margin: auto;
-}
-
-.modal header {
-  justify-content: space-between;
-  width: 100%;
-}
-
-.modal header img {
-  cursor: pointer;
-}
-
-.modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
-}
-
-form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-form label {
-  color: #312E2E;
-  font-size: 36px;
-}
-
-form div {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: self-start;
-  margin-bottom: 26px;
-}
-
-form input {
-  width: 100%;
-  height: 68px;
-  border: none;
-  border-radius: 5px;
+#photographer-page #contact-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 /*# sourceMappingURL=global.css.map */
