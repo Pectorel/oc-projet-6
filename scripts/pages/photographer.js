@@ -61,11 +61,13 @@ async function displayData(photographer) {
 
     // Display Photographer Media
     const $media_container = document.querySelector(".media-container");
+    let i = 1;
     photographer.media.forEach((media) => {
         // eslint-disable-next-line no-undef
        const mediaModel = mediaFactory(media);
-       const mediaCardDom = mediaModel.getMediaCardDOM();
-        $media_container.appendChild(mediaCardDom);
+       const $mediaCardDom = mediaModel.getMediaCardDOM(i);
+       $media_container.appendChild($mediaCardDom);
+       i++;
 
     });
 
@@ -93,7 +95,25 @@ async function init(){
 
 }
 
-init();
+init().then(() => {
+
+    let $lightbox_prev = document.querySelectorAll("[data-lightbox-prev]");
+    let $lightbox_next = document.querySelectorAll("[data-lightbox-next]");
+
+    $lightbox_prev.forEach(($elem) => {
+        $elem.addEventListener("click", function (){
+            switchLightboxMedia(this);
+        });
+    });
+
+    $lightbox_next.forEach(($elem) => {
+        $elem.addEventListener("click", function (){
+            switchLightboxMedia(this);
+        });
+    });
+
+
+});
 
 
 /*
@@ -127,7 +147,7 @@ function onFormSubmit(e, $form){
 // eslint-disable-next-line no-unused-vars
 function showLightbox(media){
 
-    console.log(media);
+    //console.log(media);
 
     let $lightbox = document.querySelector("#media-lightbox");
     let $lightbox_media = document.querySelector(".lightbox-media");
@@ -140,22 +160,84 @@ function showLightbox(media){
     // Media
     if(media.image != null){
 
-
+        // eslint-disable-next-line no-undef
         $media = createElement("img", ["lightbox-media-img"], null, {"src": path + media.image, "alt": media.title});
 
     }
     else{
+        // eslint-disable-next-line no-undef
         $media = createElement("video", ["lightbox-media-vid"], null, {"src": path + media.video, "controls" : null});
     }
 
     // Title
+    // eslint-disable-next-line no-undef
     const $title = createElement("p", ["lightbox-media-title"], media.title);
 
     // Append
     $lightbox_media.appendChild($media);
     $lightbox_media.appendChild($title);
 
+    // We set Lightbox current media order
+    $lightbox.setAttribute("data-lightbox-current", media.order);
 
     $lightbox.style.display = "block";
+
+}
+
+/*
+*
+* Change the media in the lightbox (next & prev)
+*
+*   $elem Object "Html Element that is clicked (prev or next)"
+*
+* */
+function switchLightboxMedia($elem) {
+
+    let $lightbox = $elem.closest("[data-lightbox-current]");
+
+    let current = parseInt($lightbox.getAttribute("data-lightbox-current"));
+
+    let $target = null;
+
+    let type = $elem.hasAttribute("data-lightbox-prev") ? "prev" : "next";
+
+
+    // Previous
+    if(type === "prev") {
+
+        // If already at first element, we go to last element
+        if(current === 1) {
+
+            $target = document.querySelector("[data-lightbox-order]:last-child");
+
+        }
+        // Else we substract 1 to the current order to get previous media
+        else {
+            current-=1;
+            $target = document.querySelector(`[data-lightbox-order="${current}"]`);
+        }
+
+    }
+    // Next
+    else {
+
+        // We get next order
+        current+=1;
+        $target = document.querySelector(`[data-lightbox-order="${current}"]`);
+
+        // If last media in lightbox, then we go back to first media
+        if($target === null) {
+            $target = document.querySelector(`[data-lightbox-order="1"]`);
+        }
+
+
+    }
+
+    console.log($target);
+    // We simulate a click on the targeted media
+    if($target !== null) {
+        $target.click();
+    }
+
 
 }

@@ -5,9 +5,15 @@ function mediaFactory(data) {
     const {id, photographerId, title, image, video, likes, date, price} = data;
     let media = `./assets/images/${photographerId}/`;
 
-    function getMediaCardDOM() {
+    function getMediaCardDOM(order) {
 
+        data.order = order;
+
+        // Article container
         const $article = createElement("article", ["media"]);
+        $article.setAttribute("data-lightbox-order", data.order);
+
+        // Div that contains the media
         const $media_source_container = createElement("div", ["media-source-container"]);
 
         // Check video or img
@@ -28,6 +34,7 @@ function mediaFactory(data) {
         }
         attributes.src = media;
 
+        // We create the correct element (img or video) depending of the media type
         const $media = createElement(type, ["media-source"], null, attributes);
 
         $media_source_container.appendChild($media);
@@ -44,7 +51,7 @@ function mediaFactory(data) {
         $article.appendChild($media_source_container);
         $article.appendChild($media_info);
 
-        // Event Listener
+        // Event Listener for the Lightbox
         $article.addEventListener("click", function (){
             // eslint-disable-next-line no-undef
             showLightbox(data);
@@ -52,7 +59,6 @@ function mediaFactory(data) {
 
         return $article;
     }
-
 
 
     return {id, photographerId, title, image, video, likes, date, price, getMediaCardDOM}
