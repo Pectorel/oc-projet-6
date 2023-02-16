@@ -63,19 +63,27 @@ async function displayData(photographer) {
     // Display Photographer Media
     const $media_container = document.querySelector(".media-container");
     let i = 1;
+    let likes = 0;
     photographer.media.forEach((media) => {
         // eslint-disable-next-line no-undef
        const mediaModel = mediaFactory(media);
        const $mediaCardDom = mediaModel.getMediaCardDOM(i);
        $media_container.appendChild($mediaCardDom);
        i++;
+       likes+=media.likes;
 
     });
 
     // Display Photographer Name in Modal
     const $modal_title = document.querySelector(".modal-title");
-
     $modal_title.textContent += " " + photographer.photographer.name;
+
+    // Display likes and Price
+    const $likes_number = document.querySelector("#photographer-details-like-number");
+    const $price_number = document.querySelector("#photographer-details-price-number");
+
+    $likes_number.textContent = likes;
+    $price_number.textContent = `${photographer.photographer.price}€ / jour`;
 
 }
 

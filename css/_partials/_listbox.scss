@@ -45,7 +45,7 @@
       }
 
       &:hover{
-        background: lighten($primary-color, 5%);
+        background: $quarternary-color;
       }
 
       &:not(:last-child){

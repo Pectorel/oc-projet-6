@@ -12,6 +12,10 @@
   color: #fff;
   cursor: pointer;
 
+  &:hover{
+    background: $quarternary-color;
+  }
+
 }
 
 

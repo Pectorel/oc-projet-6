@@ -259,15 +259,38 @@ h1 {
 
         .media-info-title{
           font-size: 1.5rem;
+          max-width: 75%;
         }
 
         .media-info-likes{
           font-weight: 500;
+          font-size: 1.5rem;
+
+          .like-icon{
+            margin-left: .8rem;
+          }
         }
 
       }
 
     }
+
+  }
+
+  #photographer-details-container{
+
+    position: fixed;
+    right: 2rem;
+    bottom: 0;
+    background: $quarternary-color;
+    padding: 1rem 2rem;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    font-size: 1.5rem;
+    font-weight: 500;
 
   }
 

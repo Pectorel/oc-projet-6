@@ -161,6 +161,9 @@ h1, h2, h3, h4, h5, h6, a, p, span {
   color: #fff;
   cursor: pointer;
 }
+.btn:hover {
+  background: #DB8876;
+}
 
 /*
 *
@@ -202,7 +205,7 @@ h1, h2, h3, h4, h5, h6, a, p, span {
   border-radius: 0 0 5px 5px;
 }
 .listbox-container .listbox .listbox-option:hover {
-  background: #a52020;
+  background: #DB8876;
 }
 .listbox-container .listbox .listbox-option:not(:last-child):after {
   content: "";
@@ -526,8 +529,27 @@ h1 {
 }
 #photographer-page .media-container .media .media-info .media-info-title {
   font-size: 1.5rem;
+  max-width: 75%;
 }
 #photographer-page .media-container .media .media-info .media-info-likes {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+#photographer-page .media-container .media .media-info .media-info-likes .like-icon {
+  margin-left: 0.8rem;
+}
+#photographer-page #photographer-details-container {
+  position: fixed;
+  right: 2rem;
+  bottom: 0;
+  background: #DB8876;
+  padding: 1rem 2rem;
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 #photographer-page #media-lightbox {

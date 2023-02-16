@@ -44,7 +44,9 @@ function mediaFactory(data) {
         const $media_info = createElement("div", ["media-info"]);
         const $media_info_title = createElement("p", ["media-info-title"], title);
         const $media_info_likes = createElement("p", ["media-info-likes"], likes);
+        const $media_info_likes_icon = createElement("i", ["like-icon", "fa-solid", "fa-heart"]);
 
+        $media_info_likes.appendChild($media_info_likes_icon);
         $media_info.appendChild($media_info_title);
         $media_info.appendChild($media_info_likes);
 
