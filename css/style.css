@@ -1,50 +1,553 @@
-@import url("photographer.css");
-
-body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+/*
+* Contain all global variables
+*/
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
+h1, h2, h3, h4, h5, h6, a, p, span {
+  margin: 0;
+}
 
+* {
+  font-family: "DM Sans", sans-serif;
+}
+
+.container {
+  max-width: 1400px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.mr-0 {
+  margin-right: 0;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mx-0 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.my-0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.mr-1 {
+  margin-right: 0.5rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+
+.mx-1 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.my-1 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mr-2 {
+  margin-right: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
+
+.mx-2 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.my-2 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mr-3 {
+  margin-right: 1.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+.mx-3 {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.my-3 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mr-4 {
+  margin-right: 2rem;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+.mx-4 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.my-4 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.mr-5 {
+  margin-right: 4rem;
+}
+
+.mb-5 {
+  margin-bottom: 4rem;
+}
+
+.mx-5 {
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+.my-5 {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.mr-6 {
+  margin-right: 8rem;
+}
+
+.mb-6 {
+  margin-bottom: 8rem;
+}
+
+.mx-6 {
+  margin-left: 8rem;
+  margin-right: 8rem;
+}
+
+.my-6 {
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+}
+
+/*
+*
+*  Contains all generic classes and mixins related to buttons
+*
+*/
+.btn {
+  border: none;
+  border-radius: 5px;
+  background: #901c1c;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
+
+/*
+*
+*  Contains all generic classes and mixins related to listbox (custom select for example)
+*
+*/
+.listbox-container {
+  position: relative;
+}
+.listbox-container .listbox {
+  display: none;
+  background: #901c1c;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 4;
+  border-radius: 5px;
+  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.6);
+}
+.listbox-container .listbox.active {
+  display: block;
+}
+.listbox-container .listbox .listbox-option {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.listbox-container .listbox .listbox-option:first-child {
+  border-radius: 5px 5px 0 0;
+}
+.listbox-container .listbox .listbox-option:last-child {
+  border-radius: 0 0 5px 5px;
+}
+.listbox-container .listbox .listbox-option:hover {
+  background: #a52020;
+}
+.listbox-container .listbox .listbox-option:not(:last-child):after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 86%;
+  height: 1px;
+  background: #fff;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+form label {
+  color: #312E2E;
+  font-size: 36px;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+}
+form input, form textarea {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+}
+form input {
+  height: 68px;
+}
+form textarea {
+  resize: none;
+}
+form .submit-btn {
+  padding: 1.2rem 2rem;
+  font-size: 14px;
+}
+
+.modal {
+  border-radius: 5px;
+  background-color: #DB8876;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 35px 35px 35px;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: -2px 6px 10px 1px rgba(0, 0, 0, 0.4);
+}
+.modal header {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.modal header img {
+  cursor: pointer;
+  position: absolute;
+  top: 23px;
+  right: 0;
+}
+.modal header .modal-title {
+  font-size: 64px;
+  font-weight: normal;
+  text-align: left;
+  color: #000;
+}
+
+.lightbox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80%;
+  min-width: 50%;
+  z-index: 48;
+}
+.lightbox .close-lightbox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  z-index: 12;
+}
+.lightbox .lightbox-media-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: 2rem;
+}
+.lightbox .lightbox-media-container .lightbox-media-prev, .lightbox .lightbox-media-container .lightbox-media-next {
+  cursor: pointer;
+}
+.lightbox .lightbox-media-container .lightbox-media-prev {
+  transform: rotateZ(180deg);
+}
+.lightbox .lightbox-media-container .lightbox-media {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  flex-direction: column;
+  height: 100%;
+  display: flex;
+  border-radius: 5px;
+}
+.lightbox .lightbox-media-container .lightbox-media:after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 15px 15px 0;
+  width: 4px;
+  background: #c4c4c4;
+}
+.lightbox .lightbox-media-container .lightbox-media img, .lightbox .lightbox-media-container .lightbox-media video {
+  height: 100%;
+  border-radius: 5px;
+}
+.lightbox .lightbox-media-container .lightbox-media .lightbox-media-title {
+  margin-top: 0.6rem;
+  display: block;
+  color: #901c1c;
+  font-size: 24px;
+  text-align: left;
+}
+
+/*
+* Page Specific Style
+*/
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
 }
 
 h1 {
-    color: #901C1C;
-    margin-right: 100px;
+  color: #901c1c;
+  margin-right: 56px;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+  height: 50px;
+  margin-left: 56px;
+}
+
+#main {
+  margin: 80px 0;
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 120px;
 }
 
-.photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.photographer {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  cursor: pointer;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+.photographer .photographer-img-container {
+  width: 70%;
+  padding-top: 70%;
+  height: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
 }
 
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
+.photographer-img-container .photographer-img {
+  width: 155%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+
+.photographer .photographer-name {
+  color: #d3573c;
+  font-size: 2.25rem;
+  margin-top: 20px;
+  margin-bottom: 4px;
+  font-weight: 400;
+}
+
+.photographer .photographer-city {
+  color: #901c1c;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.photographer .photographer-price {
+  color: #757575;
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+#photographer-page header .logo {
+  margin-left: 0;
+}
+#photographer-page #main {
+  margin: 0;
+}
+#photographer-page .photograph-header {
+  background-color: #fafafa;
+  height: 300px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem 3rem;
+}
+#photographer-page .photograph-header .photograph-header-info .photograph-header-info-name {
+  color: #d3573c;
+  font-size: 4rem;
+  font-weight: 400;
+}
+#photographer-page .photograph-header .photograph-header-info .photograph-header-info-location {
+  color: #901c1c;
+  font-size: 1.5rem;
+}
+#photographer-page .photograph-header .contact-btn {
+  font-size: 20px;
+  padding: 1.25rem 0.875rem;
+}
+#photographer-page .photograph-header .photograph-header-img-container {
+  width: 15%;
+  height: 0;
+  padding-top: 15%;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+}
+#photographer-page .photograph-header .photograph-header-img-container .photograph-header-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 155%;
+}
+#photographer-page .media-filters {
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#photographer-page .media-filters .sort-label {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+#photographer-page .media-filters .sort-btn {
+  position: relative;
+  padding: 1.25rem 4rem 1.25rem 1.25rem;
+  font-size: 1.125rem;
+  width: 170px;
+  text-align: left;
+}
+#photographer-page .media-filters .sort-btn:after {
+  content: ">";
+  position: absolute;
+  top: 50%;
+  right: 0.6rem;
+  transform: translateY(-50%) rotateZ(90deg);
+  font-size: 1.875rem;
+  font-weight: 400;
+  transition: transform 0.25s ease-in-out;
+  z-index: 6;
+}
+#photographer-page .media-filters .sort-btn.active:after {
+  transform: translateY(-50%) rotateZ(270deg);
+}
+#photographer-page .media-container {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 25px 95px;
+}
+#photographer-page .media-container .media {
+  cursor: pointer;
+}
+#photographer-page .media-container .media .media-source-container {
+  position: relative;
+  overflow: hidden;
+  height: 325px;
+  border-radius: 5px;
+}
+#photographer-page .media-container .media .media-source-container .media-source {
+  width: 140%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#photographer-page .media-container .media .media-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #901c1c;
+  padding: 0.5rem 0;
+}
+#photographer-page .media-container .media .media-info .media-info-title {
+  font-size: 1.5rem;
+}
+#photographer-page .media-container .media .media-info .media-info-likes {
+  font-weight: 500;
+}
+#photographer-page #media-lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  z-index: 48;
+}
+#photographer-page #contact-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/*# sourceMappingURL=style.css.map */

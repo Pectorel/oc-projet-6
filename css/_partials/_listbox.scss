@@ -1,0 +1,70 @@
+/*
+*
+*  Contains all generic classes and mixins related to listbox (custom select for example)
+*
+*/
+
+.listbox-container{
+
+  position: relative;
+
+  .listbox{
+
+    display: none;
+    background: $primary-color;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+    border-radius: 5px;
+    box-shadow: 0 0 6px 1px rgba(#000, .6);
+
+    &.active{
+      display: block;
+    }
+
+    .listbox-option{
+
+      display: block;
+      position: relative;
+      width: 100%;
+      padding: 1.25rem;
+      box-sizing: border-box;
+      color: #fff;
+      font-size: 1.125rem;
+      font-weight: 700;
+      cursor: pointer;
+
+      &:first-child{
+        border-radius: 5px 5px 0 0;
+      }
+
+      &:last-child{
+        border-radius: 0 0 5px 5px;
+      }
+
+      &:hover{
+        background: lighten($primary-color, 5%);
+      }
+
+      &:not(:last-child){
+
+        &:after{
+          content: "";
+          position: absolute;
+          left: 50%;
+          bottom: 0;
+          transform: translateX(-50%);
+          width: 86%;
+          height: 1px;
+          background: #fff;
+        }
+
+      }
+
+    }
+
+  }
+
+}

@@ -3,19 +3,21 @@ async function getPhotographers() {
   // du projet,
   // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
   return new Promise((resolve) => {
-    const photographers = [];
-    fetch('./data/photographers.json')
-      .then((res) => {
-        res.json()
-          .then((data) => {
-            const people = data.photographers;
-            for (const key in people) {
-                const photographer = people[key];
-                photographers.push(photographer);
-            }
+      let fetcher = new JsonFetcher("./data/photographers.json");
+      fetcher.then((res) => {
 
-            resolve(photographers);
-          });
+          let data = res.object;
+
+          const photographers = [];
+
+          const people = data.photographers;
+          for (const key in people) {
+              const photographer = people[key];
+              photographers.push(photographer);
+          }
+
+          resolve(photographers);
+
       });
   });
 }

@@ -1,0 +1,17 @@
+/*
+*
+*  Contains all generic classes and mixins related to buttons
+*
+*/
+
+.btn{
+  border: none;
+  border-radius: 5px;
+  background: $primary-color;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+
+}
+
+

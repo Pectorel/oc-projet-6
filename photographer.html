@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <link href="./css/global.css" rel="stylesheet" type="text/css" />
+    <link href="./css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <title>Fisheye - photographe </title>
@@ -19,12 +19,17 @@
 
         <div class="media-filters container mb-5">
 
-            <label class="mr-3" for="media-sort">Trier par</label>
-            <select class="media-select" name="media_sort" id="media-sort">
-                <option value="likes">Popularité</option>
-                <option value="date">Date</option>
-                <option value="title">Titre</option>
-            </select>
+            <span class="mr-3 sort-label">Trier par</span>
+
+            <div class="listbox-container">
+                <button class="btn sort-btn" data-listbox-target="#sort-listbox">Aucun Tri</button>
+                <div id="sort-listbox" class="listbox" data-listbox data-listbox-callback="sortMedia">
+                    <span class="listbox-option" data-listbox-option="likes">Popularité</span>
+                    <span class="listbox-option" data-listbox-option="date">Date</span>
+                    <span class="listbox-option" data-listbox-option="title">Titre</span>
+                </div>
+            </div>
+
 
         </div>
 
@@ -72,12 +77,13 @@
                     <label for="message">Votre message</label>
                     <textarea name="message" id="message" cols="30" rows="6" required></textarea>
                 </div>
-                <button type="submit" class="contact-button">Envoyer</button>
+                <button type="submit" class="btn submit-btn">Envoyer</button>
             </form>
         </div>
     </div>
 
 
+    <script src="./scripts/utils/jsonFetcher.js"></script>
     <script src="./scripts/utils/dataFunctions.js"></script>
     <script src="./scripts/utils/createElement.js"></script>
     <script src="./scripts/factories/photographer.js"></script>

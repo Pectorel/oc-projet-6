@@ -6,12 +6,19 @@ function photographerFactory(data) {
 
   function getUserCardDOM() {
 
+    // eslint-disable-next-line no-undef
     const $article = createElement('article',["photographer"],null,  {"data-link-id": id});
+    // eslint-disable-next-line no-undef
     const $img_container = createElement('div',["photographer-img-container"]);
+    // eslint-disable-next-line no-undef
     const $img = createElement("img",["photographer-img"], null, {"src" : picture, "alt": name});
+    // eslint-disable-next-line no-undef
     const $h2 = createElement('h2',["photographer-name"], name);
+    // eslint-disable-next-line no-undef
     const $city_p = createElement('p',["photographer-city"], `${city}, ${country}`,);
+    // eslint-disable-next-line no-undef
     const $tagline_p = createElement('p',["photographer-tagline"], tagline);
+    // eslint-disable-next-line no-undef
     const $price_p = createElement('p',["photographer-price"],`${price}€/jour`,);
 
     $img_container.appendChild($img);
@@ -28,9 +35,13 @@ function photographerFactory(data) {
   function getUserPageDOM() {
 
     // Header Infos
+    // eslint-disable-next-line no-undef
     const $header_info = createElement("div",["photograph-header-info"]);
+    // eslint-disable-next-line no-undef
     const $name = createElement("h1",["photograph-header-info-name", "mb-1"], name);
+    // eslint-disable-next-line no-undef
     const $location = createElement("p",["photograph-header-info-location", "mb-2"],`${city}, ${country}`,);
+    // eslint-disable-next-line no-undef
     const $tagline = createElement("p",["photograph-header-info-tagline"], tagline,);
 
     $header_info.appendChild($name);
@@ -38,13 +49,17 @@ function photographerFactory(data) {
     $header_info.appendChild($tagline);
 
     // Modal button
+    // eslint-disable-next-line no-undef
     const $btn_container = createElement("div",["photograph-header-btn-container"]);
-    const $modal_btn = createElement("button",["contact_button"],"Contactez-moi",{"onclick": "displayModal()"});
+    // eslint-disable-next-line no-undef
+    const $modal_btn = createElement("button",["btn", "contact-btn"],"Contactez-moi",{"onclick": "displayModal()"});
 
     $btn_container.appendChild($modal_btn);
 
     // Photographer img
+    // eslint-disable-next-line no-undef
     const $header_img_container = createElement("div",["photograph-header-img-container"]);
+    // eslint-disable-next-line no-undef
     const $header_img = createElement("img",["photograph-header-img"],null,{"src": picture, "alt": name});
 
     $header_img_container.appendChild($header_img);
@@ -52,31 +67,6 @@ function photographerFactory(data) {
 
     return {"header_info" : $header_info, "btn_container": $btn_container, "header_img_container": $header_img_container};
   }
-
-  /*function createElement(tag, txt = null, classes = null, attributes = null) {
-
-    const $elem = document.createElement(tag);
-
-    if(Array.isArray(classes) && classes.length > 0) {
-      classes.forEach((val) => {
-        $elem.classList.add(val);
-      });
-    }
-
-    if(attributes != null && Object.keys(attributes).length > 0) {
-
-      for(let i in attributes) {
-        $elem.setAttribute(i, attributes[i]);
-      }
-    }
-
-    if(txt != null){
-      $elem.textContent = txt;
-    }
-
-    return $elem;
-
-  }*/
 
   return {name, id, city, country, tagline, price, picture, getUserCardDOM, getUserPageDOM};
 }

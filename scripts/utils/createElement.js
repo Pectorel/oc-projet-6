@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function createElement(tag, classes = null, txt = null, attributes = null) {
 
     const $elem = document.createElement(tag);

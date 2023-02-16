@@ -3,47 +3,48 @@
 async function getPhotographerInfo(id) {
 
     return new Promise((resolve) => {
-        let photographer = null;
-        fetch('./data/photographers.json')
-            .then((res) => {
-                res.json()
-                    .then((data) => {
 
-                        const people = data.photographers;
+        // eslint-disable-next-line no-undef
+        let fetcher = new JsonFetcher('./data/photographers.json');
+        fetcher.then((res) => {
 
-                        // We get the corresponding photographer info with provided id
-                        for (const key in people) {
+            let data = res.object;
+            let photographer = null;
 
-                            if(people[key].id === id) {
-                                photographer = people[key];
-                                break;
-                            }
+            const people = data.photographers;
 
-                        }
+            // We get the corresponding photographer info with provided id
+            for (const key in people) {
 
-                        if(photographer !== null) {
+                if(people[key].id === id) {
+                    photographer = people[key];
+                    break;
+                }
 
-                            const media = data.media;
-                            const media_list = [];
+            }
 
-                            for(const key in media) {
+            if(photographer !== null) {
 
+                const media = data.media;
+                const media_list = [];
 
-                                if(media[key].photographerId === id) {
-
-                                    media_list.push(media[key]);
-
-                                }
-
-                            }
-
-                            //console.log(media_list);
-                            resolve({"photographer" : photographer, "media" : media_list});
-                        }
+                for(const key in media) {
 
 
-                    });
-            });
+                    if(media[key].photographerId === id) {
+
+                        media_list.push(media[key]);
+
+                    }
+
+                }
+
+                //console.log(media_list);
+                resolve({"photographer" : photographer, "media" : media_list});
+            }
+        });
+
+
     });
 
 }
@@ -178,7 +179,8 @@ function showLightbox(media){
     $lightbox_media.appendChild($title);
 
     // We set Lightbox current media order
-    $lightbox.setAttribute("data-lightbox-current", media.order);
+    let order = document.querySelector(`[data-media-id="${media.id}"]`).getAttribute("data-lightbox-order");
+    $lightbox.setAttribute("data-lightbox-current", order);
 
     $lightbox.style.display = "block";
 
@@ -208,7 +210,15 @@ function switchLightboxMedia($elem) {
         // If already at first element, we go to last element
         if(current === 1) {
 
-            $target = document.querySelector("[data-lightbox-order]:last-child");
+            // We get the highest order number
+            document.querySelectorAll("[data-lightbox-order]").forEach(($elem) => {
+
+                let order = parseInt($elem.getAttribute("data-lightbox-order"));
+
+                if (current < order) current = order;
+
+            });
+            $target = document.querySelector(`[data-lightbox-order="${current}"]`);
 
         }
         // Else we substract 1 to the current order to get previous media
@@ -233,11 +243,66 @@ function switchLightboxMedia($elem) {
 
     }
 
-    console.log($target);
     // We simulate a click on the targeted media
     if($target !== null) {
         $target.click();
     }
+
+
+}
+
+async function sortMedia(option) {
+
+
+    let $media = document.querySelectorAll("[data-media-id]");
+
+    // eslint-disable-next-line no-undef
+    const fetcher = await new JsonFetcher("./data/photographers.json");
+
+    let media = fetcher.object.media;
+    //console.log(media);
+    let media_ids = [];
+
+    $media.forEach(($elem) => {
+        media_ids.push(parseInt($elem.getAttribute("data-media-id")));
+    });
+
+    let media_data = [];
+    media.forEach((media) => {
+        if (media_ids.includes(media.id)) media_data.push(media);
+    });
+
+    media_data.sort((a, b) => {
+
+        if(option === "date") {
+
+            let date_a = new Date(a.date);
+            let date_b = new Date(b.date);
+
+            return date_b - date_a;
+
+        }
+        else if(option === "title"){
+
+            return a.title.localeCompare(b.title);
+
+        }
+
+        return b[option] - a[option];
+    });
+
+
+    let i = 0;
+
+    media_data.forEach((media) => {
+
+        let $media = document.querySelector(`[data-media-id="${media.id}"]`);
+        $media.style.order = i.toString();
+        $media.setAttribute("data-lightbox-order", (i+1).toString());
+        i++;
+
+    });
+
 
 
 }

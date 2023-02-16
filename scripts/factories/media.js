@@ -12,6 +12,7 @@ function mediaFactory(data) {
         // Article container
         const $article = createElement("article", ["media"]);
         $article.setAttribute("data-lightbox-order", data.order);
+        $article.setAttribute("data-media-id", data.id);
 
         // Div that contains the media
         const $media_source_container = createElement("div", ["media-source-container"]);
