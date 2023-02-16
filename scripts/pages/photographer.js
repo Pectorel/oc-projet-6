@@ -298,7 +298,8 @@ async function sortMedia(option) {
 
         let $media = document.querySelector(`[data-media-id="${media.id}"]`);
         $media.style.order = i.toString();
-        $media.setAttribute("data-lightbox-order", (i+1).toString());
+        let order_lightbox = i+1;
+        $media.setAttribute("data-lightbox-order", order_lightbox.toString());
         i++;
 
     });
