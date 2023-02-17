@@ -43,9 +43,11 @@ function mediaFactory(data) {
         // Media Infos
         const $media_info = createElement("div", ["media-info"]);
         const $media_info_title = createElement("p", ["media-info-title"], title);
-        const $media_info_likes = createElement("p", ["media-info-likes"], likes);
-        const $media_info_likes_icon = createElement("i", ["like-icon", "fa-solid", "fa-heart"]);
+        const $media_info_likes = createElement("p", ["media-info-likes"]);
+        const $media_info_likes_span = createElement("span", ["media-info-likes-span"], likes, {"data-like-closest": ''});
+        const $media_info_likes_icon = createElement("i", ["like-icon", "fa-solid", "fa-heart"], null, {"data-like-add": ''});
 
+        $media_info_likes.appendChild($media_info_likes_span);
         $media_info_likes.appendChild($media_info_likes_icon);
         $media_info.appendChild($media_info_title);
         $media_info.appendChild($media_info_likes);
@@ -55,7 +57,7 @@ function mediaFactory(data) {
         $article.appendChild($media_info);
 
         // Event Listener for the Lightbox
-        $article.addEventListener("click", function (){
+        $media_source_container.addEventListener("click", function (){
             // eslint-disable-next-line no-undef
             showLightbox(data);
         });

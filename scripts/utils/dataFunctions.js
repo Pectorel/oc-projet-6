@@ -67,4 +67,47 @@ window.onload=()=>{
 
     });
 
+
+    // Data Likes
+    let $data_likes = document.querySelectorAll("[data-like-add]");
+
+    $data_likes.forEach(($elem) => {
+
+       $elem.addEventListener("click", () => {
+
+           if(!$elem.classList.contains("clicked")) {
+
+               let $target = $elem.parentElement.querySelector("[data-like-closest]");
+
+               if($target != null){
+
+                   addLike($target);
+
+                   $elem.classList.add("clicked");
+
+                   let $global_targets = document.querySelectorAll("[data-like-change]");
+
+                   $global_targets.forEach(($elem) => {
+
+                       addLike($elem);
+
+                   });
+
+               }
+
+           }
+
+       });
+
+    });
+
+}
+
+function addLike($target) {
+
+    let num = parseInt($target.textContent);
+    num+=1;
+    num = num.toString();
+    $target.textContent = num;
+
 }

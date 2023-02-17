@@ -253,7 +253,7 @@ function switchLightboxMedia($elem) {
 
     // We simulate a click on the targeted media
     if($target !== null) {
-        $target.click();
+        $target.querySelector(".media-source-container").click();
     }
 
 

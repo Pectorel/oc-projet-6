@@ -230,14 +230,13 @@ h1 {
 
     .media{
 
-      cursor: pointer;
-
       .media-source-container{
 
         position: relative;
         overflow: hidden;
         height: 325px;
         border-radius: 5px;
+        cursor: pointer;
 
         .media-source{
           width: 140%;
@@ -268,6 +267,14 @@ h1 {
 
           .like-icon{
             margin-left: .8rem;
+
+
+            &:hover:not(.clicked){
+
+              color: $quarternary-color;
+              cursor: pointer;
+
+            }
           }
         }
 

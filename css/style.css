@@ -504,14 +504,12 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 25px 95px;
 }
-#photographer-page .media-container .media {
-  cursor: pointer;
-}
 #photographer-page .media-container .media .media-source-container {
   position: relative;
   overflow: hidden;
   height: 325px;
   border-radius: 5px;
+  cursor: pointer;
 }
 #photographer-page .media-container .media .media-source-container .media-source {
   width: 140%;
@@ -537,6 +535,10 @@ h1 {
 }
 #photographer-page .media-container .media .media-info .media-info-likes .like-icon {
   margin-left: 0.8rem;
+}
+#photographer-page .media-container .media .media-info .media-info-likes .like-icon:hover:not(.clicked) {
+  color: #DB8876;
+  cursor: pointer;
 }
 #photographer-page #photographer-details-container {
   position: fixed;
