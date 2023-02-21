@@ -24,7 +24,7 @@ function mediaFactory(data) {
 
             media+=image;
             type = "img";
-            attributes = {"alt": title};
+            attributes = {"alt": `${title}, closeup view`};
 
         }
         else {

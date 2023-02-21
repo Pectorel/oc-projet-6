@@ -9,37 +9,38 @@
   </head>
   <body id="photographer-page">
 
-    <header class="container my-4">
+    <header class="container my-4" role="banner">
         <a href="./">
             <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
         </a>
     </header>
 
     <main id="main">
-        <div class="photograph-header container mb-3"></div>
 
-        <div class="media-filters container mb-5">
+        <section class="photograph-header container mb-3"></section>
 
-            <span class="mr-3 sort-label">Trier par</span>
+        <section class="media-filters container mb-5">
+
+            <span id="sort-label" class="mr-3 sort-label">Trier par</span>
 
             <div class="listbox-container">
-                <button class="btn sort-btn" data-listbox-target="#sort-listbox">Aucun Tri</button>
-                <div id="sort-listbox" class="listbox" data-listbox data-listbox-callback="sortMedia">
+                <button id="sort-btn" class="btn sort-btn" data-listbox-target="#sort-listbox" aria-labelledby="sort-btn" role="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="sort-listbox">Aucun Tri</button>
+                <div id="sort-listbox" class="listbox" data-listbox data-listbox-callback="sortMedia" role="listbox" aria-activedescendant aria-selected aria-labelledby="sort-label">
                     <span class="listbox-option" data-listbox-option="likes">Popularité</span>
                     <span class="listbox-option" data-listbox-option="date">Date</span>
                     <span class="listbox-option" data-listbox-option="title">Titre</span>
                 </div>
             </div>
 
-        </div>
+        </section>
 
-        <div class="media-container container"></div>
+        <section class="media-container container"></section>
 
         <div id="photographer-details-container">
 
             <div class="photographer-details-likes">
                 <span id="photographer-details-like-number" data-like-change></span>
-                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-heart" aria-label="likes"></i>
             </div>
             <div class="photographer-details-price">
                 <span id="photographer-details-price-number"></span>
@@ -50,9 +51,9 @@
 
     <div id="media-lightbox">
 
-        <div class="lightbox">
+        <div class="lightbox" aria-label="image closeup view">
 
-            <img class="close-lightbox" src="assets/icons/close-lightbox.svg" data-close="#media-lightbox"/>
+            <img class="close-lightbox" src="assets/icons/close-lightbox.svg" data-close="#media-lightbox" alt="Close dialog"/>
 
             <div class="lightbox-media-container">
                 <img class="lightbox-media-prev" src="./assets/icons/arrow.svg" alt="Previous image" data-lightbox-prev>
@@ -67,29 +68,29 @@
     </div>
 
     <div id="contact-modal">
-        <div class="modal">
+        <div class="modal" aria-labelledby="modal-title">
             <header class="mb-2">
-              <h1 class="modal-title">Contactez-moi</h1>
-              <img src="assets/icons/close.svg" onclick="closeModal()" />
+              <h1 id="modal-title" class="modal-title">Contactez-moi</h1>
+              <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact form"/>
             </header>
-            <form id="modal-form" name="modal-form" action="./" method="POST" onsubmit="onFormSubmit(event, this);">
+            <form id="modal-form" name="modal-form" action="./" method="POST" onsubmit="onFormSubmit(event, this);" role="form">
                 <div class="form-field">
-                    <label for="first-name">Prénom</label>
-                    <input id="first-name" name="first_name" required/>
+                    <label id="first-name-label" for="first-name">Prénom</label>
+                    <input id="first-name" name="first_name" required aria-labelledby="first-name-label"/>
                 </div>
                 <div class="form-field">
-                    <label for="last-name">Nom</label>
-                    <input id="last-name" name="last_name" required/>
+                    <label id="last-name-label" for="last-name">Nom</label>
+                    <input id="last-name" name="last_name" required aria-labelledby="last-name-label"/>
                 </div>
                 <div class="form-field">
-                    <label for="mail">Email</label>
-                    <input id="mail" name="mail" required/>
+                    <label id="mail-label" for="mail">Email</label>
+                    <input id="mail" name="mail" required aria-labelledby="mail-label"/>
                 </div>
                 <div class="form-field mb-3">
-                    <label for="message">Votre message</label>
-                    <textarea name="message" id="message" cols="30" rows="6" required></textarea>
+                    <label id="message-label" for="message">Votre message</label>
+                    <textarea name="message" id="message" cols="30" rows="6" required aria-labelledby="message-label"></textarea>
                 </div>
-                <button type="submit" class="btn submit-btn">Envoyer</button>
+                <button type="submit" class="btn submit-btn" aria-label="Send">Envoyer</button>
             </form>
         </div>
     </div>

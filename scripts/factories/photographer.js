@@ -52,7 +52,7 @@ function photographerFactory(data) {
     // eslint-disable-next-line no-undef
     const $btn_container = createElement("div",["photograph-header-btn-container"]);
     // eslint-disable-next-line no-undef
-    const $modal_btn = createElement("button",["btn", "contact-btn"],"Contactez-moi",{"onclick": "displayModal()"});
+    const $modal_btn = createElement("button",["btn", "contact-btn"],"Contactez-moi",{"onclick": "displayModal()", "aria-label": "Contact Me"});
 
     $btn_container.appendChild($modal_btn);
 
