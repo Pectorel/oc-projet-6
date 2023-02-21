@@ -312,6 +312,4 @@ async function sortMedia(option) {
 
     });
 
-
-
 }
