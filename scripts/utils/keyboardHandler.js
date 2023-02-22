@@ -10,9 +10,7 @@ window.addEventListener("load", () => {
     // Listbox
     let $listbox = document.querySelector("#sort-listbox");
     let $listbox_options = $listbox.children;
-    console.log($listbox_options);
 
-    
     // Keyboard Events
     document.addEventListener('keydown', (event) => {
 
@@ -21,12 +19,15 @@ window.addEventListener("load", () => {
         if($lightbox.style.display === "block") {
 
             if(event.key === "ArrowLeft") {
+                event.preventDefault();
                 $previous_btn.click();
             }
             else if(event.key === "ArrowRight") {
+                event.preventDefault();
                 $next_btn.click();
             }
             else if(event.key === "Escape") {
+                event.preventDefault();
                 $close_btn.click();
             }
 
