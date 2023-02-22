@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <meta charset="utf-8" />
+    <title>Fisheye - photographe</title>
     <link href="./css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <title>Fisheye - photographe </title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
     <script src="https://kit.fontawesome.com/98c1f2f2c1.js" crossorigin="anonymous"></script>
   </head>
   <body id="photographer-page">
@@ -24,8 +24,12 @@
             <span id="sort-label" class="mr-3 sort-label">Trier par</span>
 
             <div class="listbox-container">
-                <button id="sort-btn" class="btn sort-btn" data-listbox-target="#sort-listbox" aria-labelledby="sort-btn" role="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="sort-listbox">Aucun Tri</button>
-                <div id="sort-listbox" class="listbox" data-listbox data-listbox-callback="sortMedia" role="listbox" aria-activedescendant aria-selected aria-labelledby="sort-label">
+                <button id="sort-btn" class="btn sort-btn" data-listbox-target="#sort-listbox" aria-labelledby="sort-btn"
+                        role="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="sort-listbox">
+                    Aucun Tri
+                </button>
+                <div id="sort-listbox" class="listbox" data-listbox data-listbox-callback="sortMedia" role="listbox"
+                     aria-activedescendant aria-labelledby="sort-label">
                     <span class="listbox-option" data-listbox-option="likes">Popularité</span>
                     <span class="listbox-option" data-listbox-option="date">Date</span>
                     <span class="listbox-option" data-listbox-option="title">Titre</span>
@@ -40,7 +44,7 @@
 
             <div class="photographer-details-likes">
                 <span id="photographer-details-like-number" data-like-change></span>
-                <i class="fa-solid fa-heart" aria-label="likes"></i>
+                <span class="fa-solid fa-heart" aria-label="likes"></span>
             </div>
             <div class="photographer-details-price">
                 <span id="photographer-details-price-number"></span>
@@ -103,5 +107,6 @@
     <script src="./scripts/factories/media.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
+    <script src="./scripts/utils/keyboardHandler.js"></script>
   </body>
 </html>

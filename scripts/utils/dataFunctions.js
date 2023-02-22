@@ -1,4 +1,4 @@
-window.onload=()=>{
+window.addEventListener("load", () => {
 
     // Data close
     let $data_close = document.querySelectorAll("[data-close]");
@@ -101,7 +101,7 @@ window.onload=()=>{
 
     });
 
-}
+});
 
 function addLike($target) {
 

@@ -106,6 +106,7 @@ async function init(){
 
 init().then(() => {
 
+    // Lightbox next and previous buttons click event
     let $lightbox_prev = document.querySelectorAll("[data-lightbox-prev]");
     let $lightbox_next = document.querySelectorAll("[data-lightbox-next]");
 
@@ -120,7 +121,6 @@ init().then(() => {
             switchLightboxMedia(this);
         });
     });
-
 
 });
 
