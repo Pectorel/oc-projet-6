@@ -204,7 +204,7 @@ h1, h2, h3, h4, h5, h6, a, p, span {
 .listbox-container .listbox .listbox-option:last-child {
   border-radius: 0 0 5px 5px;
 }
-.listbox-container .listbox .listbox-option:hover {
+.listbox-container .listbox .listbox-option:hover, .listbox-container .listbox .listbox-option.selected {
   background: #DB8876;
 }
 .listbox-container .listbox .listbox-option:not(:last-child):after {
