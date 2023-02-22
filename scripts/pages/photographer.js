@@ -259,6 +259,11 @@ function switchLightboxMedia($elem) {
 
 }
 
+/*
+*
+* Sort Media List when an option is choosed from the listbox
+*
+* */
 async function sortMedia(option) {
 
 

@@ -32,6 +32,15 @@ window.addEventListener("load", () => {
             $target.classList.toggle("active");
             $elem.classList.toggle("active");
 
+            if($elem.classList.contains("active")) {
+
+                $elem.setAttribute("aria-expanded", "true");
+
+            }
+            else {
+                $elem.setAttribute("aria-expanded", "false");
+            }
+
         });
 
     });
@@ -39,7 +48,6 @@ window.addEventListener("load", () => {
     let $data_listbox_options = document.querySelectorAll("[data-listbox-option]");
 
     $data_listbox_options.forEach(($elem) => {
-
 
         $elem.addEventListener("click", () => {
 
@@ -51,6 +59,7 @@ window.addEventListener("load", () => {
             let $parent = $elem.closest("[data-listbox]");
             let $btn = document.querySelector(`[data-listbox-target="#${$parent.getAttribute("id")}"]`);
 
+            $parent.setAttribute("aria-selected", text);
             $btn.textContent = text;
             $btn.click();
 
