@@ -251,6 +251,16 @@ form .submit-btn {
   font-size: 14px;
 }
 
+.modal-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
 .modal {
   border-radius: 5px;
   background-color: #DB8876;
@@ -262,6 +272,7 @@ form .submit-btn {
   padding: 15px 35px 35px 35px;
   margin: auto;
   position: fixed;
+  z-index: 16;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -572,6 +583,9 @@ h1 {
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.2);
+}
+#photographer-page #contact-modal .submit-btn:hover {
+  background: #b22323;
 }
 
 /*# sourceMappingURL=style.css.map */

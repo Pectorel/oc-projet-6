@@ -325,6 +325,16 @@ h1 {
     left: 0;
     right: 0;
     background: rgba(#000, .2);
+
+    .submit-btn {
+
+      &:hover {
+        background: lighten($primary-color, 8%);
+
+      }
+
+    }
+
   }
 
 }
