@@ -12,6 +12,7 @@ window.addEventListener("load", () => {
             let $target = document.querySelector(target_id);
 
             $target.style.display = "none";
+            $target.setAttribute("aria-hidden", "true");
 
         });
 

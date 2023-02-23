@@ -1,5 +1,9 @@
 window.addEventListener("load", () => {
 
+    // Contact modal
+    let $contact_modal = document.querySelector("#contact-modal");
+    let $close_modal = document.querySelector(".close-modal");
+
     // Lightbox
     let $lightbox = document.querySelector("#media-lightbox");
     let $previous_btn = document.querySelector(".lightbox-media-prev");
@@ -14,9 +18,17 @@ window.addEventListener("load", () => {
     // Keyboard Events
     document.addEventListener('keydown', (event) => {
 
+        // Contact Modal
+        if($contact_modal.style.display === "block") {
+
+            if(event.key === "Escape") {
+                $close_modal.click();
+            }
+
+        }
         // Lightbox
         // We chack that the lighbox is active
-        if($lightbox.style.display === "block") {
+        else if($lightbox.style.display === "block") {
 
             if(event.key === "ArrowLeft") {
                 event.preventDefault();
@@ -32,9 +44,8 @@ window.addEventListener("load", () => {
             }
 
         }
-
         // Listbox Event
-        if($listbox.classList.contains("active")) {
+        else if($listbox.classList.contains("active")) {
 
 
             if (event.key === "ArrowDown") {
@@ -58,7 +69,6 @@ window.addEventListener("load", () => {
 
             }
         }
-
     });
 
 });

@@ -144,6 +144,10 @@ function onFormSubmit(e, $form){
 
     }
 
+    $form.reset();
+    // eslint-disable-next-line no-undef
+    closeModal();
+
 
 }
 
