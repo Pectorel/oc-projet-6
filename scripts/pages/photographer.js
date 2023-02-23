@@ -164,7 +164,7 @@ function showLightbox(media){
     $lightbox_media.innerHTML = "";
 
     const path = `./assets/images/${media.photographerId}/`;
-    let $media = null;
+    let $media;
 
     // Media
     if(media.image != null){
@@ -207,7 +207,7 @@ function switchLightboxMedia($elem) {
 
     let current = parseInt($lightbox.getAttribute("data-lightbox-current"));
 
-    let $target = null;
+    let $target;
 
     let type = $elem.hasAttribute("data-lightbox-prev") ? "prev" : "next";
 
@@ -264,6 +264,7 @@ function switchLightboxMedia($elem) {
 * Sort Media List when an option is choosed from the listbox
 *
 * */
+// eslint-disable-next-line no-unused-vars
 async function sortMedia(option) {
 
 

@@ -20,7 +20,7 @@ function mediaFactory(data) {
         const $media_source_container = createElement("div", ["media-source-container"]);
 
         // Check video or img
-        let type = null;
+        let type;
         let attributes = {};
         if(image != null) {
 
