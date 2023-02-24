@@ -33,6 +33,7 @@ function mediaFactory(data) {
 
             media+=video;
             type = "video";
+            attributes = {"aria-label": `${title}, closeup view`}
 
         }
         attributes.src = media;
@@ -53,7 +54,7 @@ function mediaFactory(data) {
         // eslint-disable-next-line no-undef
         const $media_info_likes_span = createElement("span", ["media-info-likes-span"], likes, {"data-like-closest": ''});
         // eslint-disable-next-line no-undef
-        const $media_info_likes_icon = createElement("i", ["like-icon", "fa-solid", "fa-heart"], null, {"data-like-add": ''});
+        const $media_info_likes_icon = createElement("i", ["like-icon", "fa-solid", "fa-heart"], null, {"data-like-add": '', "aria-label": "Like button"});
 
         $media_info_likes.appendChild($media_info_likes_span);
         $media_info_likes.appendChild($media_info_likes_icon);
