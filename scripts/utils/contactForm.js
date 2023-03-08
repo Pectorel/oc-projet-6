@@ -5,7 +5,7 @@ function displayModal() {
     const $first_input = $modal.querySelector("input");
 	$modal.style.display = "block";
     $modal.setAttribute("aria-hidden", "false");
-    $main.setAttribute("aria-hiden", "true");
+    $main.setAttribute("aria-hidden", "true");
     $first_input.focus();
 }
 
@@ -15,5 +15,5 @@ function closeModal() {
     const $modal = document.getElementById("contact-modal");
     $modal.style.display = "none";
     $modal.setAttribute("aria-hidden", "true");
-    $main.setAttribute("aria-hiden", "false");
+    $main.setAttribute("aria-hidden", "false");
 }
