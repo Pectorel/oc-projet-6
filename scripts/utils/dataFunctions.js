@@ -1,5 +1,6 @@
 window.addEventListener("load", () => {
 
+    let $main = document.querySelector("main");
     // Data close
     let $data_close = document.querySelectorAll("[data-close]");
 
@@ -13,6 +14,7 @@ window.addEventListener("load", () => {
 
             $target.style.display = "none";
             $target.setAttribute("aria-hidden", "true");
+            $main.setAttribute("aria-hidden", "false");
 
         });
 

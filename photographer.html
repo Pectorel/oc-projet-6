@@ -23,7 +23,7 @@
 
             <span id="sort-label" class="mr-3 sort-label">Trier par</span>
 
-            <div class="listbox-container">
+            <div class="listbox-container" role="application" aria-roledescription="Sort listbox">
                 <button id="sort-btn" class="btn sort-btn" data-listbox-target="#sort-listbox" aria-labelledby="sort-btn"
                         role="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="sort-listbox">
                     Aucun Tri
@@ -53,11 +53,11 @@
         </div>
     </main>
 
-    <div id="media-lightbox" role="dialog" aria-hidden="true">
+    <div id="media-lightbox" role="application" aria-hidden="true">
 
         <div class="lightbox" aria-label="image closeup view">
 
-            <img class="close-lightbox" src="assets/icons/close-lightbox.svg" data-close="#media-lightbox" alt="Close dialog"/>
+            <img role="button" class="close-lightbox" src="assets/icons/close-lightbox.svg" data-close="#media-lightbox" alt="Close dialog" tabindex="0"/>
 
             <div class="lightbox-media-container">
                 <img class="lightbox-media-prev" src="./assets/icons/arrow.svg" alt="Previous image" data-lightbox-prev>

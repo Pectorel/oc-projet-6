@@ -195,6 +195,14 @@ function showLightbox(media){
     $lightbox.setAttribute("data-lightbox-current", order);
 
     $lightbox.style.display = "block";
+    $lightbox.setAttribute("aria-hidden", "false");
+
+    let $main = document.querySelector("main");
+    $main.setAttribute("aria-hidden", "true");
+
+    // We set focus for screenreaders
+    let $close_btn = document.querySelector(".close-lightbox");
+    $close_btn.focus();
 
 }
 

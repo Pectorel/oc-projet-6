@@ -505,6 +505,7 @@ h1 {
   font-weight: 400;
   transition: transform 0.25s ease-in-out;
   z-index: 6;
+  speak: none;
 }
 #photographer-page .media-filters .sort-btn.active:after {
   transform: translateY(-50%) rotateZ(270deg);
