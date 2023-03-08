@@ -181,12 +181,12 @@ function showLightbox(media){
     if(media.image != null){
 
         // eslint-disable-next-line no-undef
-        $media = createElement("img", ["lightbox-media-img"], null, {"src": path + media.image, "alt": media.title});
+        $media = createElement("img", ["lightbox-media-img"], null, {"src": path + media.image, "alt": media.title, "tabindex": 0});
 
     }
     else{
         // eslint-disable-next-line no-undef
-        $media = createElement("video", ["lightbox-media-vid"], null, {"src": path + media.video, "controls" : null});
+        $media = createElement("video", ["lightbox-media-vid"], null, {"src": path + media.video, "controls" : null, "aria-label": media.title + " video", "tabindex": 0});
     }
 
     // Title
@@ -207,9 +207,8 @@ function showLightbox(media){
     let $main = document.querySelector("main");
     $main.setAttribute("aria-hidden", "true");
 
-    // We set focus for screenreaders
-    let $close_btn = document.querySelector(".close-lightbox");
-    $close_btn.focus();
+    // We set focus on media for screenreaders
+    $media.focus();
 
 }
 
