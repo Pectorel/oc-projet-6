@@ -1,6 +1,7 @@
 window.addEventListener("load", () => {
 
     let $main = document.querySelector("main");
+
     // Data close
     let $data_close = document.querySelectorAll("[data-close]");
 
@@ -66,6 +67,7 @@ window.addEventListener("load", () => {
             $btn.textContent = text;
             $btn.click();
 
+            // If ther is a callback attribute, then call the function
             if($parent.hasAttribute("data-listbox-callback")) {
 
                 let callback = $parent.getAttribute("data-listbox-callback");
@@ -87,18 +89,22 @@ window.addEventListener("load", () => {
 
        $elem.addEventListener("click", () => {
 
+           // We check if element has already been clicked
            if(!$elem.classList.contains("clicked")) {
 
                let $target = $elem.parentElement.querySelector("[data-like-closest]");
 
                if($target != null){
 
+                   // We add Like to the like next to the image
                    addLike($target);
 
                    $elem.classList.add("clicked");
 
+                   // We get all global like counters on the page
                    let $global_targets = document.querySelectorAll("[data-like-change]");
 
+                   // We add a like to each of them
                    $global_targets.forEach(($elem) => {
 
                        addLike($elem);

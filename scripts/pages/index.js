@@ -40,10 +40,13 @@ async function init() {
   displayData(photographers);
 }
 
+// Once all data has been inserted
 init().then(function (){
+
 
     let $links = document.querySelectorAll("[data-link-id]");
 
+    // we set all links click event to redirect to corresponding photographer
     $links.forEach(($link) => {
 
         $link.addEventListener("click", function (){

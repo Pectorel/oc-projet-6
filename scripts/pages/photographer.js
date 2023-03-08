@@ -28,6 +28,7 @@ async function getPhotographerInfo(id) {
                 const media = data.media;
                 const media_list = [];
 
+                // We get all media related to the photographer
                 for(const key in media) {
 
 
@@ -39,7 +40,6 @@ async function getPhotographerInfo(id) {
 
                 }
 
-                //console.log(media_list);
                 resolve({"photographer" : photographer, "media" : media_list});
             }
         });
@@ -74,11 +74,10 @@ async function displayData(photographer) {
 
     });
 
+    // If only one media, we hide the lightbox arrows
     if(Object.keys(photographer.media).length <= 1)
     {
-
         hideLightboxArrows();
-
     }
 
     // Display Photographer Name in Modal
@@ -277,33 +276,39 @@ function switchLightboxMedia($elem) {
 
 }
 
-/*
-*
-* Sort Media List when an option is choosed from the listbox
-*
-* */
+/**
+ *
+ * Sort Media List when an option is choosed from the listbox
+ *
+ * @param option - String containing the selecting sort option
+ * @returns {Promise<void>}
+ */
 // eslint-disable-next-line no-unused-vars
 async function sortMedia(option) {
 
 
+    // We get all media on the page
     let $media = document.querySelectorAll("[data-media-id]");
 
     // eslint-disable-next-line no-undef
     const fetcher = await new JsonFetcher("./data/photographers.json");
 
+    // We get all media from json
     let media = fetcher.object.media;
-    //console.log(media);
     let media_ids = [];
 
     $media.forEach(($elem) => {
         media_ids.push(parseInt($elem.getAttribute("data-media-id")));
     });
 
+    //If the media id on json is also a media on the page
     let media_data = [];
     media.forEach((media) => {
+        // We add it to the media array with all its json data
         if (media_ids.includes(media.id)) media_data.push(media);
     });
 
+    // We sort depending on the option
     media_data.sort((a, b) => {
 
         if(option === "date") {
@@ -311,15 +316,18 @@ async function sortMedia(option) {
             let date_a = new Date(a.date);
             let date_b = new Date(b.date);
 
+            // We sort from most recent to most late
             return date_b - date_a;
 
         }
         else if(option === "title"){
 
+            // Sort with alphabetical order
             return a.title.localeCompare(b.title);
 
         }
 
+        // Sort with numbers of like from higher to lower
         return b[option] - a[option];
     });
 
@@ -338,6 +346,9 @@ async function sortMedia(option) {
 
 }
 
+/**
+ * Hides lightbox arrows
+ */
 function hideLightboxArrows()
 {
 
