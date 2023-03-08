@@ -209,6 +209,23 @@ function showLightbox(media){
     // We set focus on media for screenreaders
     $media.focus();
 
+    // Fix for Firefox Flexbox bug
+    if(navigator.userAgent.indexOf("Firefox") != -1)
+    {
+        let interval = setInterval(() => {
+
+            let width = $media.offsetWidth;
+
+            if(width > 0)
+            {
+                console.log("test");
+                $media.style.width = width + "px";
+                clearInterval(interval);
+            }
+
+        }, 200);
+    }
+
 }
 
 /*

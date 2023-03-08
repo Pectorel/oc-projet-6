@@ -335,19 +335,14 @@ form .submit-btn {
   display: flex;
   border-radius: 5px;
 }
-.lightbox .lightbox-media-container .lightbox-media:after {
-  content: "";
-  position: absolute;
-  right: -2px;
-  top: 0;
-  bottom: 0;
-  border-radius: 0 15px 15px 0;
-  width: 4px;
-  background: #c4c4c4;
-}
 .lightbox .lightbox-media-container .lightbox-media img, .lightbox .lightbox-media-container .lightbox-media video {
-  height: 100%;
   border-radius: 5px;
+  height: 100%;
+  align-self: center;
+  border-right: 4px solid #c4c4c4;
+}
+.lightbox .lightbox-media-container .lightbox-media img:focus, .lightbox .lightbox-media-container .lightbox-media video:focus {
+  outline: none;
 }
 .lightbox .lightbox-media-container .lightbox-media .lightbox-media-title {
   margin-top: 0.6rem;
