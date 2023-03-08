@@ -74,6 +74,13 @@ async function displayData(photographer) {
 
     });
 
+    if(Object.keys(photographer.media).length <= 1)
+    {
+
+        hideLightboxArrows();
+
+    }
+
     // Display Photographer Name in Modal
     const $modal_title = document.querySelector(".modal-title");
     $modal_title.textContent += " " + photographer.photographer.name;
@@ -327,6 +334,28 @@ async function sortMedia(option) {
         let order_lightbox = i+1;
         $media.setAttribute("data-lightbox-order", order_lightbox.toString());
         i++;
+
+    });
+
+}
+
+function hideLightboxArrows()
+{
+
+    let $arrows_prev = document.querySelectorAll("[data-lightbox-prev]");
+    let $arrows_next = document.querySelectorAll("[data-lightbox-next]");
+
+    $arrows_next.forEach(($elem) => {
+
+        $elem.style.visibility = "hidden";
+        $elem.setAttribute("aria-hidden", "true");
+
+    });
+
+    $arrows_prev.forEach(($elem) => {
+
+        $elem.style.visibility = "hidden";
+        $elem.setAttribute("aria-hidden", "true");
 
     });
 

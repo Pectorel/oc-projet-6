@@ -26,17 +26,18 @@ window.addEventListener("load", () => {
             }
 
         }
+
         // Lightbox
-        // We chack that the lighbox is active
+        // We check that the lightbox is active
         else if($lightbox.style.display === "block") {
 
             if(event.key === "ArrowLeft") {
                 event.preventDefault();
-                $previous_btn.click();
+                if($previous_btn.style.visibility !== "hidden") $previous_btn.click();
             }
             else if(event.key === "ArrowRight") {
                 event.preventDefault();
-                $next_btn.click();
+                if($next_btn.style.visibility !== "hidden") $next_btn.click();
             }
             else if(event.key === "Escape") {
                 event.preventDefault();
@@ -44,6 +45,7 @@ window.addEventListener("load", () => {
             }
 
         }
+
         // Listbox Event
         else if($listbox.classList.contains("active")) {
 
