@@ -409,6 +409,9 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.photographer .photographer-link .photographer-img-container .photographer-img:focus-visible {
+  outline: black auto 1px !important;
+}
 .photographer .photographer-link .photographer-name {
   color: #d3573c;
   font-size: 2.25rem;
@@ -540,10 +543,14 @@ h1 {
 }
 #photographer-page .media-container .media .media-info .media-info-likes .like-icon {
   margin-left: 0.8rem;
+  color: #c4c4c4;
 }
 #photographer-page .media-container .media .media-info .media-info-likes .like-icon:hover:not(.clicked) {
   color: #DB8876;
   cursor: pointer;
+}
+#photographer-page .media-container .media .media-info .media-info-likes .like-icon.clicked {
+  color: #901c1c;
 }
 #photographer-page #photographer-details-container {
   position: fixed;
