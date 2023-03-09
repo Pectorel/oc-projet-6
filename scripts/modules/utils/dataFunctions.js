@@ -1,4 +1,6 @@
+// Imports
 import {JsonFetcher} from "./jsonFetcher.js";
+import {aria} from "./ariaFunctions.js";
 
 /**
  *
@@ -7,8 +9,6 @@ import {JsonFetcher} from "./jsonFetcher.js";
  */
 function init() {
 
-    let $main = document.querySelector("main");
-
     // Data close
     let $data_close = document.querySelectorAll("[data-close]");
 
@@ -16,14 +16,15 @@ function init() {
 
         $elem.addEventListener("click", () => {
 
+            // We get the targeted HTMLElement
             let target_id = $elem.getAttribute("data-close");
-
             let $target = document.querySelector(target_id);
 
+            // We hide the targeted HTMLElement
             $target.style.display = "none";
 
-            $target.setAttribute("aria-hidden", "true");
-            $main.setAttribute("aria-hidden", "false");
+            // We set the aria attributes
+            aria("aria-hidden", $target, "true");
 
         });
 
@@ -46,11 +47,11 @@ function init() {
 
             if($elem.classList.contains("active")) {
 
-                $elem.setAttribute("aria-expanded", "true");
+                aria("aria-expanded", $elem, "true");
 
             }
             else {
-                $elem.setAttribute("aria-expanded", "false");
+                aria("aria-expanded", $elem, "false");
             }
 
         });
@@ -71,7 +72,7 @@ function init() {
             let $parent = $elem.closest("[data-listbox]");
             let $btn = document.querySelector(`[data-listbox-target="#${$parent.getAttribute("id")}"]`);
 
-            $parent.setAttribute("aria-selected", text);
+            aria("aria-selected", $parent, text);
             $btn.textContent = text;
             $btn.click();
 
@@ -101,6 +102,7 @@ function init() {
 
                     // We add a class to indicate that the like button has been clicked
                     $elem.classList.add("clicked");
+                    aria("aria-disabled", $elem, "true");
 
                     // We get all global like counters on the page
                     let $global_targets = document.querySelectorAll("[data-like-change]");

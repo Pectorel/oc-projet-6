@@ -1,3 +1,6 @@
+// Imports
+import {aria} from "./ariaFunctions.js";
+
 /**
  * Display the contact modal
  */
@@ -12,8 +15,7 @@ function display() {
 	$modal.style.display = "block";
 
     // Changing aria attributes
-    $modal.setAttribute("aria-hidden", "false");
-    $main.setAttribute("aria-hidden", "true");
+    aria("aria-hidden", $modal, "false");
 
     // Focus first input for accessibility
     $first_input.focus();

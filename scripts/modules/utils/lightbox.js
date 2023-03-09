@@ -1,5 +1,6 @@
 // Imports
 import {createElement} from "./createElement.js";
+import {aria} from "./ariaFunctions.js";
 
 /**
  *
@@ -12,7 +13,6 @@ function display(media) {
     // Getting required HTMLElements
     let $lightbox = document.querySelector("#media-lightbox");
     let $lightbox_media = document.querySelector(".lightbox-media");
-    let $main = document.querySelector("main");
 
     // We Empty the media container from the lightbox
     $lightbox_media.innerHTML = "";
@@ -44,14 +44,13 @@ function display(media) {
     $lightbox.style.display = "block";
 
     // Setting aria attributes
-    $lightbox.setAttribute("aria-hidden", "false");
-    $main.setAttribute("aria-hidden", "true");
+    aria("aria-hidden", $lightbox, "false");
 
     // We set focus on media for screenreaders to read the image alt
     $media.focus();
 
     // Fix for a Firefox Flexbox bug that made flex-item not resizing correctly with image or video when no defined width is provided for the media
-    if(navigator.userAgent.indexOf("Firefox") != -1)
+    if(navigator.userAgent.indexOf("Firefox") !== -1)
     {
         let interval = setInterval(() => {
 
