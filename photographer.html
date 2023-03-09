@@ -21,7 +21,7 @@
 
         <section class="media-filters container mb-5">
 
-            <span id="sort-label" class="mr-3 sort-label">Trier par</span>
+            <span id="sort-label" class="mr-3 sort-label" tabindex="0">Trier par</span>
 
             <div class="listbox-container" role="application" aria-roledescription="Sort listbox">
                 <button id="sort-btn" class="btn sort-btn" data-listbox-target="#sort-listbox" aria-labelledby="sort-btn"
@@ -29,10 +29,10 @@
                     Aucun Tri
                 </button>
                 <div id="sort-listbox" class="listbox" data-listbox data-listbox-callback="sortMedia" role="listbox"
-                     aria-activedescendant aria-selected="Aucun Tri" aria-labelledby="sort-label">
-                    <span class="listbox-option" aria-label="Popularité" data-listbox-option="likes" tabindex="0">Popularité</span>
-                    <span class="listbox-option" aria-label="Date" data-listbox-option="date" tabindex="0">Date</span>
-                    <span class="listbox-option" aria-label="Titre" data-listbox-option="title" tabindex="0">Titre</span>
+                     aria-activedescendant="popularity" aria-selected="Aucun Tri" aria-labelledby="sort-label">
+                    <span class="listbox-option" id="popularity" aria-label="Popularité" data-listbox-option="likes" tabindex="0">Popularité</span>
+                    <span class="listbox-option" id="date" aria-label="Date" data-listbox-option="date" tabindex="0">Date</span>
+                    <span class="listbox-option" id="title" aria-label="Titre" data-listbox-option="title" tabindex="0">Titre</span>
                 </div>
             </div>
 
@@ -53,9 +53,9 @@
         </div>
     </main>
 
-    <div id="media-lightbox" role="application" aria-hidden="true">
+    <div id="media-lightbox" role="application" aria-hidden="true" aria-label="image closeup view">
 
-        <div class="lightbox" aria-label="image closeup view">
+        <div class="lightbox">
 
             <img class="close-lightbox" src="assets/icons/close-lightbox.svg" data-close="#media-lightbox" alt="Close dialog"/>
 
@@ -71,11 +71,11 @@
 
     </div>
 
-    <div id="contact-modal" role="dialog" aria-hidden="true">
+    <div id="contact-modal" role="dialog" aria-hidden="true" aria-labelledby="modal-title">
 
         <div class="modal-layer" data-close="#contact-modal"></div>
 
-        <div class="modal" aria-labelledby="modal-title">
+        <div class="modal">
             <header class="mb-2">
                   <h1 id="modal-title" class="modal-title">Contactez-moi</h1>
                   <img src="assets/icons/close.svg" class="close-modal" data-close="#contact-modal" alt="Close Contact form"/>

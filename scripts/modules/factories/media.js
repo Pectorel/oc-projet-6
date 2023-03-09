@@ -16,7 +16,7 @@ function mediaFactory(data) {
         const $article = createElement("article", ["media"], null, {"data-lightbox-order": data.order, "data-media-id": data.id});
 
         // Div that contains the media
-        const $media_source_container = createElement("div", ["media-source-container"]);
+        const $media_source_container = createElement("div", ["media-source-container"], null, {"tabindex": 0, "aria-labelledby": "media-source"});
 
         // Check if the media is a video or an image
         let type;
@@ -25,21 +25,20 @@ function mediaFactory(data) {
 
             media+=image;
             type = "img";
-            attributes = {"alt": `${title}, closeup view`};
+            attributes = {"id": "media-source","alt": `${title}, closeup view`};
 
         }
         else {
 
             media+=video;
             type = "video";
-            attributes = {"aria-label": `${title}, closeup view`}
+            attributes = {"id": "media-source", "aria-label": `${title}, closeup view`}
 
         }
         attributes.src = media;
 
         // We create the correct element (img or video) depending of the media type
         const $media = createElement(type, ["media-source"], null, attributes);
-
         $media_source_container.appendChild($media);
 
         // Media Infos
@@ -65,7 +64,6 @@ function mediaFactory(data) {
 
         return $article;
     }
-
 
     return {id, photographerId, title, image, video, likes, date, price, getMediaCardDOM}
 }

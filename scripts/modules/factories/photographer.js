@@ -57,10 +57,10 @@ function photographerFactory(data) {
   function getUserPageDOM() {
 
     // Header Infos HTMLElements
-    const $header_info = createElement("div",["photograph-header-info"]);
-    const $name = createElement("h1",["photograph-header-info-name", "mb-1"], name);
-    const $location = createElement("p",["photograph-header-info-location", "mb-2"],`${city}, ${country}`,);
-    const $tagline = createElement("p",["photograph-header-info-tagline"], tagline,);
+    const $header_info = createElement("div",["photograph-header-info"], null);
+    const $name = createElement("h1",["photograph-header-info-name", "mb-1"], name,{"tabindex": 0});
+    const $location = createElement("p",["photograph-header-info-location", "mb-2"],`${city}, ${country}`, {"tabindex": 0});
+    const $tagline = createElement("p",["photograph-header-info-tagline"], tagline, {"tabindex": 0});
 
     // Header Infos append HTMLElements
     $header_info.appendChild($name);
@@ -79,8 +79,9 @@ function photographerFactory(data) {
     $btn_container.appendChild($modal_btn);
 
     // Photographer img HTMLElements
-    const $header_img_container = createElement("div",["photograph-header-img-container"]);
+    const $header_img_container = createElement("div",["photograph-header-img-container"], null, {"tabindex": 0, "aria-labelledby": "photograph-header-img"});
     const $header_img = createElement("img",["photograph-header-img"],null,{"src": picture, "alt": name});
+    $header_img.setAttribute("id", "photograph-header-img");
 
     // Photographer img append HTMLElements
     $header_img_container.appendChild($header_img);
