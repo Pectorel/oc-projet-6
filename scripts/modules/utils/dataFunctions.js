@@ -103,6 +103,8 @@ function init() {
                     // We add a class to indicate that the like button has been clicked
                     $elem.classList.add("clicked");
                     aria("aria-disabled", $elem, "true");
+                    aria("aria-label", $elem, "Photo déjà likée");
+                    $elem.setAttribute("title", "Photo déjà likée");
 
                     // We get all global like counters on the page
                     let $global_targets = document.querySelectorAll("[data-like-change]");
