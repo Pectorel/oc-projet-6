@@ -6,15 +6,19 @@
  * @param attributes - object containing all attributes to add to the element, can be null
  * @returns HTMLElement - Returns the HTML element created
  */
-// eslint-disable-next-line no-unused-vars
 function createElement(tag, classes = null, txt = null, attributes = null) {
 
+    // We create the HTML Element with given tag
     const $elem = document.createElement(tag);
 
+    // If the classes array is not empty
     if(Array.isArray(classes) && classes.length > 0) {
+
         classes.forEach((val) => {
+            // We add every classes
             $elem.classList.add(val);
         });
+
     }
 
     if(attributes != null && Object.keys(attributes).length > 0) {
@@ -31,3 +35,5 @@ function createElement(tag, classes = null, txt = null, attributes = null) {
     return $elem;
 
 }
+
+export {createElement};

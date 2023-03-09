@@ -1,4 +1,7 @@
-// eslint-disable-next-line no-unused-vars
+// Imports
+import {createElement} from "../utils/createElement.js";
+import * as lightbox from "../utils/lightbox.js";
+
 function mediaFactory(data) {
 
 
@@ -10,16 +13,12 @@ function mediaFactory(data) {
         data.order = order;
 
         // Article container
-        // eslint-disable-next-line no-undef
-        const $article = createElement("article", ["media"]);
-        $article.setAttribute("data-lightbox-order", data.order);
-        $article.setAttribute("data-media-id", data.id);
+        const $article = createElement("article", ["media"], null, {"data-lightbox-order": data.order, "data-media-id": data.id});
 
         // Div that contains the media
-        // eslint-disable-next-line no-undef
         const $media_source_container = createElement("div", ["media-source-container"]);
 
-        // Check video or img
+        // Check if the media is a video or an image
         let type;
         let attributes = {};
         if(image != null) {
@@ -39,21 +38,15 @@ function mediaFactory(data) {
         attributes.src = media;
 
         // We create the correct element (img or video) depending of the media type
-        // eslint-disable-next-line no-undef
         const $media = createElement(type, ["media-source"], null, attributes);
 
         $media_source_container.appendChild($media);
 
         // Media Infos
-        // eslint-disable-next-line no-undef
         const $media_info = createElement("div", ["media-info"]);
-        // eslint-disable-next-line no-undef
         const $media_info_title = createElement("p", ["media-info-title"], title);
-        // eslint-disable-next-line no-undef
         const $media_info_likes = createElement("p", ["media-info-likes"]);
-        // eslint-disable-next-line no-undef
         const $media_info_likes_span = createElement("span", ["media-info-likes-span"], likes, {"data-like-closest": ''});
-        // eslint-disable-next-line no-undef
         const $media_info_likes_icon = createElement("i", ["like-icon", "fa-solid", "fa-heart"], null, {"data-like-add": '', "aria-label": "Like button"});
 
         $media_info_likes.appendChild($media_info_likes_span);
@@ -67,8 +60,7 @@ function mediaFactory(data) {
 
         // Event Listener for the Lightbox
         $media_source_container.addEventListener("click", function (){
-            // eslint-disable-next-line no-undef
-            showLightbox(data);
+            lightbox.display(data);
         });
 
         return $article;
@@ -77,3 +69,5 @@ function mediaFactory(data) {
 
     return {id, photographerId, title, image, video, likes, date, price, getMediaCardDOM}
 }
+
+export {mediaFactory};

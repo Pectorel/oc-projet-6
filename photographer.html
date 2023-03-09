@@ -72,24 +72,26 @@
     </div>
 
     <div id="contact-modal" role="dialog" aria-hidden="true">
-        <div class="modal-layer" onclick="closeModal()"></div>
+
+        <div class="modal-layer" data-close="#contact-modal"></div>
+
         <div class="modal" aria-labelledby="modal-title">
             <header class="mb-2">
-              <h1 id="modal-title" class="modal-title">Contactez-moi</h1>
-              <img src="assets/icons/close.svg" class="close-modal" onclick="closeModal()" alt="Close Contact form"/>
+                  <h1 id="modal-title" class="modal-title">Contactez-moi</h1>
+                  <img src="assets/icons/close.svg" class="close-modal" data-close="#contact-modal" alt="Close Contact form"/>
             </header>
-            <form id="modal-form" name="modal-form" action="./" method="POST" onsubmit="onFormSubmit(event, this);" role="form">
+            <form id="modal-form" name="modal-form" action="./" method="POST" role="form">
                 <div class="form-field">
                     <label id="first-name-label" for="first-name">Prénom</label>
-                    <input id="first-name" name="first_name" required aria-labelledby="first-name-label"/>
+                    <input type="text" id="first-name" name="first_name" required aria-labelledby="first-name-label"/>
                 </div>
                 <div class="form-field">
                     <label id="last-name-label" for="last-name">Nom</label>
-                    <input id="last-name" name="last_name" required aria-labelledby="last-name-label"/>
+                    <input type="text" id="last-name" name="last_name" required aria-labelledby="last-name-label"/>
                 </div>
                 <div class="form-field">
                     <label id="mail-label" for="mail">Email</label>
-                    <input id="mail" name="mail" required aria-labelledby="mail-label"/>
+                    <input type="email" id="mail" name="mail" required aria-labelledby="mail-label"/>
                 </div>
                 <div class="form-field mb-3">
                     <label id="message-label" for="message">Votre message</label>
@@ -100,14 +102,6 @@
         </div>
     </div>
 
-
-    <script src="./scripts/utils/jsonFetcher.js"></script>
-    <script src="./scripts/utils/dataFunctions.js"></script>
-    <script src="./scripts/utils/createElement.js"></script>
-    <script src="./scripts/factories/photographer.js"></script>
-    <script src="./scripts/factories/media.js"></script>
-    <script src="./scripts/pages/photographer.js"></script>
-    <script src="./scripts/utils/contactForm.js"></script>
-    <script src="./scripts/utils/keyboardHandler.js"></script>
+    <script src="./scripts/modules/pages/photographer.js" type="module"></script>
   </body>
 </html>

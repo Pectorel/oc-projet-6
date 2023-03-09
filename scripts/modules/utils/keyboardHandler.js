@@ -1,17 +1,17 @@
-window.addEventListener("load", () => {
+function init() {
 
-    // Contact modal
+    // Contact modal HTMLElements
     let $contact_modal = document.querySelector("#contact-modal");
     let $close_modal = document.querySelector(".close-modal");
 
-    // Lightbox
+    // Lightbox HTML Elements
     let $lightbox = document.querySelector("#media-lightbox");
     let $previous_btn = document.querySelector(".lightbox-media-prev");
     let $next_btn = document.querySelector(".lightbox-media-next");
     let $close_btn = document.querySelector(".close-lightbox");
 
 
-    // Listbox
+    // Listbox HTML Elements
     let $listbox = document.querySelector("#sort-listbox");
     let $listbox_options = $listbox.children;
 
@@ -73,42 +73,64 @@ window.addEventListener("load", () => {
         }
     });
 
-});
+}
 
-
+/**
+ *
+ * Change the focus on listbox
+ *
+ * @param $options
+ * @param type
+ */
 function changeSelectedOption($options, type) {
 
+    // Initiating variables
     let $selected = null;
     let i = 0;
 
+
     for(let $elem of $options) {
 
+        // We search for the current selected option
         if($elem.classList.contains("selected")){
+
+            // If we want the next element
             if(type === "next") {
                 $selected = $options[i+1];
             }
             else {
+                // Else select the previous element
                 $selected = $options[i-1];
             }
 
+            // We remove the selected class from the currently selected HTML element
             $elem.classList.remove("selected");
         }
         i++;
 
     }
 
+    // If there is no element selected
     if($selected == null) {
 
+        // If we want the next one
         if(type === "next") {
+            // We select the first option
             $selected = $options[0];
         }
         else {
+            // Else with select the last option
             $selected = $options[$options.length - 1];
         }
 
     }
 
+    // We add the selected class to the targeted option
     $selected.classList.add("selected");
+
+    // We focus the option for screenreaders to read the text
     $selected.focus();
 
 }
+
+export {init, changeSelectedOption};
