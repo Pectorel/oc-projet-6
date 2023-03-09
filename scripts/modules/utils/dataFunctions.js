@@ -197,11 +197,12 @@ async function sortMedia(option) {
 
     let i = 0;
 
+
     media_data.forEach((media) => {
 
         // We change the grid order to match the sort
         let $media = document.querySelector(`[data-media-id="${media.id}"]`);
-        $media.style.order = i.toString();
+
 
         // We change the lightbox order to make the lightbox next and previous button match the media gallery order
         let order_lightbox = i + 1;

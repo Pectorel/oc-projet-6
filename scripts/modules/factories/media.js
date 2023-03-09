@@ -43,10 +43,10 @@ function mediaFactory(data) {
 
         // Media Infos
         const $media_info = createElement("div", ["media-info"]);
-        const $media_info_title = createElement("p", ["media-info-title"], title);
+        const $media_info_title = createElement("p", ["media-info-title"], title, {"tabindex": 0});
         const $media_info_likes = createElement("p", ["media-info-likes"]);
-        const $media_info_likes_span = createElement("span", ["media-info-likes-span"], likes, {"data-like-closest": ''});
-        const $media_info_likes_icon = createElement("i", ["like-icon", "fa-solid", "fa-heart"], null, {"data-like-add": '', "aria-label": "Like button"});
+        const $media_info_likes_span = createElement("span", ["media-info-likes-span"], likes, {"data-like-closest": '', "tabindex": 0});
+        const $media_info_likes_icon = createElement("i", ["like-icon", "fa-solid", "fa-heart"], null, {"data-like-add": '', "aria-label": "Like button", "tabindex": 0});
 
         $media_info_likes.appendChild($media_info_likes_span);
         $media_info_likes.appendChild($media_info_likes_icon);

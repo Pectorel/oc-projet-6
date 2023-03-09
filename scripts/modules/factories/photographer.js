@@ -26,10 +26,10 @@ function photographerFactory(data) {
   function getUserCardDOM() {
 
     // We create all the HTMLElements
-    const $article = createElement('article',["photographer"],null,  {"tabindex": 0, "aria-label": `${name} - Photograph Section`});
-    const $photographer_link = createElement('a',["photographer-link"],null, {"href": `photographer.html?id=${id}`, "tabindex": 0});
-    const $img_container = createElement('div', ["photographer-img-container"]);
-    const $img = createElement("img",["photographer-img"], null, {"src" : picture, "alt": name, "tabindex": 0});
+    const $article = createElement('article',["photographer"],null);
+    const $photographer_link = createElement('a',["photographer-link"],null, {"href": `photographer.html?id=${id}`, "tabindex": 0, "aria-label": `${name}`});
+    const $img_container = createElement('div', ["photographer-img-container"], null, {"tabindex": 0, "aria-labelledby": `photographer-img-${id}`});
+    const $img = createElement("img",["photographer-img"], null, {"src" : picture, "alt": name, "id": `photographer-img-${id}`});
     const $h2 = createElement('h2',["photographer-name"], name, {"tabindex": 0});
     const $city_p = createElement('p',["photographer-city"], `${city}, ${country}`, {"tabindex": 0});
     const $tagline_p = createElement('p',["photographer-tagline"], tagline, {"tabindex": 0});
