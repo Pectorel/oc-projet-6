@@ -26,17 +26,17 @@
   transform: translate(-50%, -50%);
   box-shadow: -2px 6px 10px 1px rgba(#000, .4);
 
-  header{
-    display: block;
+  .modal-header{
+    display: flex;
     position: relative;
     width: 100%;
     height: auto;
 
     img{
       cursor: pointer;
-      position: absolute;
-      top: 23px;
-      right: 0;
+      position: relative;
+      top: 20px;
+      align-self: flex-start;
     }
 
     .modal-title{

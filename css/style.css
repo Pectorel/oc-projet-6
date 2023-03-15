@@ -278,19 +278,19 @@ form .submit-btn {
   transform: translate(-50%, -50%);
   box-shadow: -2px 6px 10px 1px rgba(0, 0, 0, 0.4);
 }
-.modal header {
-  display: block;
+.modal .modal-header {
+  display: flex;
   position: relative;
   width: 100%;
   height: auto;
 }
-.modal header img {
+.modal .modal-header img {
   cursor: pointer;
-  position: absolute;
-  top: 23px;
-  right: 0;
+  position: relative;
+  top: 20px;
+  align-self: flex-start;
 }
-.modal header .modal-title {
+.modal .modal-header .modal-title {
   font-size: 64px;
   font-weight: normal;
   text-align: left;
