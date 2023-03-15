@@ -45,7 +45,6 @@ function init() {
             }
 
         }
-
         // Listbox Event
         else if($listbox.classList.contains("active")) {
 
@@ -70,6 +69,34 @@ function init() {
                 if($selected != null) $selected.click();
 
             }
+        }
+        // Non screen readers enter for Lightbox and like buttons
+        else {
+
+            if(event.key === "Enter")
+            {
+                // Lightbox
+                let $lightbox_click_item = document.querySelector(".media-source-container:focus-visible");
+
+                if($lightbox_click_item != null)
+                {
+                    $lightbox_click_item.click();
+                }
+                else
+                {
+                    // Like button
+                    let $like_btn = document.querySelector("[data-like-add]:focus-visible");
+
+                    if($like_btn != null)
+                    {
+                        $like_btn.click();
+                    }
+                }
+
+            }
+
+
+
         }
     });
 

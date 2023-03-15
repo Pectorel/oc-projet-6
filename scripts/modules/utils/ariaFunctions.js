@@ -15,9 +15,11 @@ function aria(attribute, $elem, value) {
 
         if(attribute.includes("hidden"))
         {
+            let $header = document.querySelector(".page-header");
             let $main = document.querySelector("main");
             let val = (value === "true") ? "false" : true;
             $main.setAttribute(attribute, val);
+            $header.setAttribute(attribute, val);
 
         }
 

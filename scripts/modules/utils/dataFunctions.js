@@ -90,33 +90,45 @@ function init() {
 
         $elem.addEventListener("click", () => {
 
+            // We get the targeted like number span
+            let $target = $elem.parentElement.querySelector("[data-like-closest]");
+            let add_value = 1;
+
             // We check if element has already been clicked
-            if(!$elem.classList.contains("clicked")) {
+            if($elem.classList.contains("clicked")) {
+                add_value = -1;
 
-                let $target = $elem.parentElement.querySelector("[data-like-closest]");
+            }
 
-                if($target != null){
+            if($target != null)
+            {
 
-                    // We add Like to the like next to the image
-                    addLike($target);
+                // We add Like to the like next to the image
+                setLikeNumber($target, add_value);
 
-                    // We add a class to indicate that the like button has been clicked
-                    $elem.classList.add("clicked");
-                    aria("aria-disabled", $elem, "true");
-                    aria("aria-label", $elem, "Photo déjà likée");
-                    $elem.setAttribute("title", "Photo déjà likée");
+                // We toggle the .clicked class to indicate that the like button has been clicked or not
+                $elem.classList.toggle("clicked");
 
-                    // We get all global like counters on the page
-                    let $global_targets = document.querySelectorAll("[data-like-change]");
-
-                    // We add a like to each of them
-                    $global_targets.forEach(($elem) => {
-
-                        addLike($elem);
-
-                    });
-
+                // We toggle some aria attributes
+                let $aria_disabled = "true";
+                let $aria_label = "Dislike Button";
+                if(!$elem.classList.contains("clicked"))
+                {
+                    $aria_disabled = "false";
+                    $aria_label = "Like Button";
                 }
+                aria("aria-disabled", $elem, $aria_disabled);
+                aria("aria-label", $elem, $aria_label);
+
+                // We get all global like counters on the page
+                let $global_targets = document.querySelectorAll("[data-like-change]");
+
+                // We add a like to each of them
+                $global_targets.forEach(($elem) => {
+
+                    setLikeNumber($elem, add_value);
+
+                });
 
             }
 
@@ -131,11 +143,12 @@ function init() {
  * Add one like to given HTMLElement
  *
  * @param $target - HTMLElement containing the like number
+ * @param value - value to add or retract to likes - DEFAULT = 1
  */
-function addLike($target) {
+function setLikeNumber($target, value = 1) {
 
     let num = parseInt($target.textContent);
-    num+=1;
+    num+=value;
     num = num.toString();
     $target.textContent = num;
 
@@ -198,19 +211,33 @@ async function sortMedia(option) {
     let i = 0;
 
 
+    let $media_sorted = [];
     media_data.forEach((media) => {
 
-        // We change the grid order to match the sort
+        // We change the order to match the sort
         let $media = document.querySelector(`[data-media-id="${media.id}"]`);
-
 
         // We change the lightbox order to make the lightbox next and previous button match the media gallery order
         let order_lightbox = i + 1;
         $media.setAttribute("data-lightbox-order", order_lightbox.toString());
         i++;
 
+        // Getting all element to be sorted correctly
+        $media_sorted.push($media);
+
     });
+
+    let $container = document.querySelector(".media-container");
+
+    $container.innerHTML = "";
+
+    $media_sorted.forEach(($media) => {
+
+        $container.appendChild($media);
+
+    });
+
 
 }
 
-export {init, addLike};
+export {init};

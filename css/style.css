@@ -544,10 +544,13 @@ h1 {
 #photographer-page .media-container .media .media-info .media-info-likes .like-icon {
   margin-left: 0.8rem;
   color: #c4c4c4;
-}
-#photographer-page .media-container .media .media-info .media-info-likes .like-icon:hover:not(.clicked) {
-  color: #DB8876;
   cursor: pointer;
+}
+#photographer-page .media-container .media .media-info .media-info-likes .like-icon:hover {
+  color: #DB8876;
+}
+#photographer-page .media-container .media .media-info .media-info-likes .like-icon:hover.clicked {
+  color: #b7b7b7 !important;
 }
 #photographer-page .media-container .media .media-info .media-info-likes .like-icon.clicked {
   color: #901c1c;

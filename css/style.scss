@@ -279,11 +279,15 @@ h1{
           .like-icon{
             margin-left: .8rem;
             color: #c4c4c4;
+            cursor: pointer;
 
-            &:hover:not(.clicked){
-
+            &:hover{
               color: $quarternary-color;
-              cursor: pointer;
+            }
+
+            &:hover.clicked{
+
+              color: darken(#c4c4c4, 5%) !important;
 
             }
 
