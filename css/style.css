@@ -134,7 +134,7 @@ h1, h2, h3, h4, h5, h6, a, p, span {
   margin-right: 8rem;
 }
 
-.mb-6 {
+.mb-6, #photographer-page .media-container {
   margin-bottom: 8rem;
 }
 

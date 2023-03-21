@@ -237,6 +237,7 @@ h1{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 25px 95px;
+    @extend .mb-6;
 
 
     .media{
