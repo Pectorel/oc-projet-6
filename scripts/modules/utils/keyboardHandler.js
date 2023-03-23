@@ -1,3 +1,7 @@
+// Import
+import {setFocusable} from "./tabFocusHandler.js";
+
+
 function init() {
 
     // Contact modal HTMLElements
@@ -21,6 +25,7 @@ function init() {
         // Contact Modal
         if($contact_modal.style.display === "block") {
 
+            // Close modal with Escape button
             if(event.key === "Escape") {
                 $close_modal.click();
             }
@@ -98,7 +103,10 @@ function init() {
 
 
         }
+
     });
+
+
 
 }
 

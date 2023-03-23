@@ -46,6 +46,7 @@ function photographerFactory(data) {
 
     return ($article);
 
+
   }
 
   /**

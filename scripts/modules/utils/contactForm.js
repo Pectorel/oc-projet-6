@@ -1,5 +1,6 @@
 // Imports
 import {aria} from "./ariaFunctions.js";
+import {setFocusable} from "./tabFocusHandler.js";
 
 /**
  * Display the contact modal
@@ -7,7 +8,6 @@ import {aria} from "./ariaFunctions.js";
 function display() {
 
     // Getting required HTMLElement
-    const $main = document.querySelector("main");
     const $modal = document.getElementById("contact-modal");
     const $first_input = $modal.querySelector("input");
 
@@ -19,6 +19,11 @@ function display() {
 
     // Focus first input for accessibility
     $first_input.focus();
+
+    // We get all focusable elements
+    let $focusable_elements = document.querySelectorAll("[tabindex], a, button:not(.submit-btn)");
+    // We disable the focus on these elements
+    setFocusable(-1, $focusable_elements);
 
 }
 

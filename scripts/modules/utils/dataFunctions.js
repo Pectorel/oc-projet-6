@@ -1,6 +1,7 @@
 // Imports
 import {JsonFetcher} from "./jsonFetcher.js";
 import {aria} from "./ariaFunctions.js";
+import {setFocusable} from "./tabFocusHandler.js";
 
 /**
  *
@@ -25,6 +26,11 @@ function init() {
 
             // We set the aria attributes
             aria("aria-hidden", $target, "true");
+
+            // We get all focusable elements
+            let $focusable_elements = document.querySelectorAll("[tabindex], a, button:not(.submit-btn)");
+            // We disable the focus on these elements
+            setFocusable(0, $focusable_elements);
 
         });
 
